@@ -11,6 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', ['as' => 'index', function () {
+    return view('indexInvitado');
+}]);
+
+Route::get('index', ['as' => 'indexUsuario', function () {
+    return view('indexUsuario');
+}]);
