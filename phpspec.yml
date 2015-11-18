@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: ProyectoPIS
+        psr4_prefix: ProyectoPIS
+        src_path: app
