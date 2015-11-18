@@ -44,7 +44,7 @@
                                     </div>
                                     <div class="col-xs-9 text-right">
                                         <div class="huge">26</div>
-                                        <div>New Comments!</div>
+                                        <div>Nuevo comentario!</div>
                                     </div>
                                 </div>
                             </div>
