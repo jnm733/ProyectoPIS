@@ -48,7 +48,7 @@
     </div>
     <ul class="nav navbar-right top-nav">
             <li class="active">
-                <a href=""><i class="fa fa-fw fa-user-plus"></i> Registrarse</a>
+                <a href="usuario/create"><i class="fa fa-fw fa-user-plus"></i> Registrarse</a>
             </li>
     </ul>
     <!-- Top Menu Items -->
@@ -57,7 +57,7 @@
     <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav side-nav">
-            {!! Form::open(array('route' => 'indexUsuario', 'method'=>'POST')) !!}
+            {!! Form::open(array('route' => 'log.store', 'method'=>'POST')) !!}
            <h3 class="text-center">Iniciar Sesión</h3>
             <div class="form-group">
                 {!!Form::text('nombreUsuario',null,['class'=>'form-control', 'required', 'placeholder'=>'Nombre de usuario'])!!}

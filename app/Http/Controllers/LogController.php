@@ -3,12 +3,14 @@
 namespace ProyectoPIS\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Auth;
+use Session;
+use Redirect;
 use ProyectoPIS\Http\Requests;
-use ProyectoPIS\Http\Requests\UserCreateRequest;
+use ProyectoPIS\Http\Requests\LoginRequest;
 use ProyectoPIS\Http\Controllers\Controller;
 
-class UsuarioController extends Controller
+class LogController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,6 +22,11 @@ class UsuarioController extends Controller
         //
     }
 
+    public function logout(){
+        Auth::logout();
+        return Redirect::to('/');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -27,7 +34,7 @@ class UsuarioController extends Controller
      */
     public function create()
     {
-        return view('usuario.create');
+        
     }
 
     /**
@@ -36,15 +43,13 @@ class UsuarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserCreateRequest $request)
+    public function store(LoginRequest $request)
     {
-        \ProyectoPIS\User::create([
-            'name' => $request['nombreUsuario'],
-            'email' => $request['email'],
-            'password' => bcrypt($request['password']),
-            ]);
-
-        return redirect()->route('index');
+        if(Auth::attempt(['name' => $request['nombreUsuario'],'password' => $request['password']])){
+            return Redirect::to('index');
+        }
+        Session::flash('message-error','Datos incorrectos');
+        return Redirect::to('/');
     }
 
     /**

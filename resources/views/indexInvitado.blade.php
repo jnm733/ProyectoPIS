@@ -3,14 +3,20 @@
 
     <!-- Navigation -->
     @extends('layouts.menuInvitado')
+    
     @section('content')
 
+    
+
         <div id="page-wrapper">
+
 
             <div class="container-fluid" style="height: 100%">
 
                 <!-- Page Heading -->
                 <div class="row">
+                @include('errors.login-error')
+                @include('errors.form')
                     <div class="col-lg-12 text-center">
                         <h1 class="page-header">
                             <br><b>Bienvenido a la Aplicación Web de Gestión de Riesgos</b>

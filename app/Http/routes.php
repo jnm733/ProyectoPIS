@@ -20,3 +20,6 @@ Route::get('index', ['as' => 'indexUsuario', function () {
 }]);
 
 Route::resource('usuario','UsuarioController');
+
+Route::resource('log','LogController');
+Route::get('logout','LogController@logout');
