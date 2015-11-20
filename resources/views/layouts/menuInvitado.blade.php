@@ -9,16 +9,16 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin - Bootstrap Admin Template</title>
+    <title>Aplicacion para la gestion de riesgos</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/sb-admin.css" rel="stylesheet">
+    <link href="/css/sb-admin.css" rel="stylesheet">
 
     <!-- Morris Charts CSS -->
-    <link href="css/plugins/morris.css" rel="stylesheet">
+    <link href="/css/plugins/morris.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <!-- <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
@@ -48,7 +48,7 @@
     </div>
     <ul class="nav navbar-right top-nav">
             <li class="active">
-                <a href="#"><i class="fa fa-fw fa-user-plus"></i> Registrarse</a>
+                <a href=""><i class="fa fa-fw fa-user-plus"></i> Registrarse</a>
             </li>
     </ul>
     <!-- Top Menu Items -->

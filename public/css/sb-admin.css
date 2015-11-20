@@ -166,6 +166,12 @@ ul.alert-dropdown {
     height: 100%;
 }
 
+.form-control-usr {
+  width: 20%;
+  
+}
+
+
 /* Custom Colored Panels */
 
 .huge {
@@ -225,3 +231,5 @@ ul.alert-dropdown {
 .panel-yellow > a:hover {
     color: #df8a13;
 }
+
+/* clases en prueba*/

@@ -18,3 +18,5 @@ Route::get('/', ['as' => 'index', function () {
 Route::get('index', ['as' => 'indexUsuario', function () {
     return view('indexUsuario');
 }]);
+
+Route::resource('usuario','UsuarioController');
