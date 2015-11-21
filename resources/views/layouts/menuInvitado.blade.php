@@ -48,7 +48,7 @@
     </div>
     <ul class="nav navbar-right top-nav">
             <li class="active">
-                <a href="usuario/create"><i class="fa fa-fw fa-user-plus"></i> Registrarse</a>
+                <a href="/registrarse"><i class="fa fa-fw fa-user-plus"></i> Registrarse</a>
             </li>
     </ul>
     <!-- Top Menu Items -->

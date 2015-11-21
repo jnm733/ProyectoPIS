@@ -19,6 +19,10 @@ Route::get('index', ['as' => 'indexUsuario', function () {
     return view('indexUsuario');
 }]);
 
+Route::get('registrarse',[
+    'as' => 'registrare', 'uses' => 'UsuarioController@create'
+]);
+
 Route::resource('usuario','UsuarioController');
 
 Route::resource('login','LogController');
