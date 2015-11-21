@@ -5,10 +5,11 @@ namespace ProyectoPIS\Http\Controllers;
 use Illuminate\Http\Request;
 
 use ProyectoPIS\Http\Requests;
-use ProyectoPIS\Http\Requests\UserCreateRequest;
+use ProyectoPIS\Http\Requests\TipoProyectoRequest;
 use ProyectoPIS\Http\Controllers\Controller;
-use ProyectoPIS\User;
-class UsuarioController extends Controller
+use ProyectoPIS\TipoProyecto;
+
+class TipoProyectoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +28,7 @@ class UsuarioController extends Controller
      */
     public function create()
     {
-        return view('usuario.create');
+        return view('tipoProyecto.create');
     }
 
     /**
@@ -36,15 +37,13 @@ class UsuarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserCreateRequest $request)
+    public function store(TipoProyectoRequest $request)
     {
-            User::create([
-            'name' => $request['nombreUsuario'],
-            'email' => $request['email'],
-            'password' => bcrypt($request['password']),
-            ]);
+        $tipo = new TipoProyecto($request->all());
+        $tipo->save();
+        return redirect()->route('proyecto.create');
 
-        return redirect()->route('index');
+
     }
 
     /**

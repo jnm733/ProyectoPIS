@@ -57,7 +57,7 @@
     <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav side-nav">
-            {!! Form::open(array('route' => 'log.store', 'method'=>'POST')) !!}
+            {!! Form::open(array('route' => 'login.store', 'method'=>'POST')) !!}
            <h3 class="text-center">Iniciar Sesión</h3>
             <div class="form-group">
                 {!!Form::text('nombreUsuario',null,['class'=>'form-control', 'required', 'placeholder'=>'Nombre de usuario'])!!}

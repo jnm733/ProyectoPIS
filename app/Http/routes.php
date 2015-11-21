@@ -21,5 +21,7 @@ Route::get('index', ['as' => 'indexUsuario', function () {
 
 Route::resource('usuario','UsuarioController');
 
-Route::resource('log','LogController');
+Route::resource('login','LogController');
+Route::resource('proyecto','ProyectoController');
+Route::resource('tipoProyecto','TipoProyectoController');
 Route::get('logout','LogController@logout');

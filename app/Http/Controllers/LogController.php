@@ -24,7 +24,7 @@ class LogController extends Controller
 
     public function logout(){
         Auth::logout();
-        return Redirect::to('/');
+        return redirect()->route('index');
     }
 
     /**
@@ -46,10 +46,10 @@ class LogController extends Controller
     public function store(LoginRequest $request)
     {
         if(Auth::attempt(['name' => $request['nombreUsuario'],'password' => $request['password']])){
-            return Redirect::to('index');
+            return redirect()->route('indexUsuario');
         }
         Session::flash('message-error','Datos incorrectos');
-        return Redirect::to('/');
+        return redirect()->route('index');
     }
 
     /**
