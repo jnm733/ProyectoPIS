@@ -4,6 +4,16 @@
     @extends('layouts.menuUsuario')
     @section('content')
 
+
+
+    <script type="text/javascript">
+            $(document).ready(function(){ 
+                    $('#crear').click(function(){ 
+                        var value = $("#lista :selected").text();
+                        document.getElementById("tipo").value= value;
+                    });
+        });
+    </script>
         <div id="page-wrapper">
 
             <div class="container-fluid" style="height: 100%">
@@ -44,7 +54,7 @@
                         <div class="form-group col-lg-12">
                         	<div class="col-lg-3">{!!Form::label('Tipo de proyecto:')!!}</div>
                         	<div class="col-lg-4">
-                        	{!!Form::select('tipo',$tipos,null,['class' => 'form-control'])!!}
+                        	{!!Form::select('lista',$tipos,null,['id'=>'lista','class' => 'form-control'])!!}
                       		</div>
                       		<div class="col-lg-2">
                       			<a href="/tipoProyecto/create" class="btn btn-primary">+
@@ -54,7 +64,7 @@
                          <div class="form-group col-lg-12">
                             <div class="col-lg-3">{!!Form::label('Descripcion del proyecto:')!!}</div>
                             <div class="col-lg-8">
-                            {!!Form::textarea('descripcionProyecto',null,['size' => '30x5','class'=>'form-control', 'required', 'placeholder'=>'Descripcion de proyecto'])!!}
+                            {!!Form::textarea('descripcion',null,['size' => '30x5','class'=>'form-control', 'required', 'placeholder'=>'Descripcion de proyecto'])!!}
                             </div>
                         </div>
                         <div class="form-group col-lg-12">
@@ -79,7 +89,8 @@
                         </div>
                         <div class="col-lg-12">
                         <div class="col-lg-3"></div>
-                        <div class="col-lg-1">{!!Form::submit('Crear',['class'=>'btn btn-primary'])!!}</div>
+                        <input type="hidden" id="tipo" name="tipo">
+                        <div class="col-lg-1">{!!Form::submit('Crear',['id'=>'crear','class'=>'btn btn-primary'])!!}</div>
                         <div class="col-lg-1"><a href="/index" class="btn btn-primary">Cancelar
                                 </a></div>
                         </div>

@@ -41,7 +41,17 @@ class ProyectoController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $tipo = $request['tipo'];
+        $id = DB::table('tipoProyecto')->where('tipo',$tipo)->value('id');
+
+        Proyecto::create([
+            'nombreProyecto' => $request['nombreProyecto'],
+            'fechaInicio' => $request['fechaInicio'],
+            'fechaFin' => $request['fechaFin'],
+            'descripcion' => $request['descripcion'],
+            'tipo_proyecto_id' => $id,
+            ]);
+        return redirect()->route('indexUsuario');
     }
 
     /**
