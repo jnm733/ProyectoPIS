@@ -38,6 +38,9 @@
                         <div class="form-group col-lg-12">
                             {!! Form::password('password', ['class'=>'form-control form-control-usr center-block', 'required', 'placeholder'=>'Contraseña']) !!}
                         </div>
+                        <div class="form-group col-lg-12">
+                        {!!Form::password('password_confirmation',['class'=>'form-control form-control-usr center-block', 'required', 'placeholder'=>'Repita la contraseña'])!!}
+                        </div>
                         <div class="col-lg-12">
                         {!!Form::submit('Registrar',['class'=>'btn center-block btn-primary'])!!}
                         </div>
