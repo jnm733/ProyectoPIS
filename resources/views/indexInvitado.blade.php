@@ -46,7 +46,7 @@
                                         <i class="fa fa-users fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">12</div>
+                                        <div class="huge">{!!$users!!}</div>
                                         <div>Usuarios</div>
                                     </div>
                                 </div>
@@ -61,7 +61,7 @@
                                         <i class="fa fa-files-o fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">26</div>
+                                        <div class="huge">{!!$proyectos!!}</div>
                                         <div>Proyectos</div>
                                     </div>
                                 </div>
@@ -76,7 +76,7 @@
                                         <i class="fa fa-exclamation-triangle fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">124</div>
+                                        <div class="huge">{!!$riesgos!!}</div>
                                         <div>Riesgos</div>
                                     </div>
                                 </div>

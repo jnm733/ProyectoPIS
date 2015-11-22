@@ -11,16 +11,15 @@
 |
 */
 
-Route::get('/', ['as' => 'index', function () {
-    return view('indexInvitado');
-}]);
-
-Route::get('index', ['as' => 'indexUsuario', function () {
-    return view('indexUsuario');
-}]);
+Route::get('/',[
+    'as' => '/', 'uses' => 'FrontController@index'
+]);
+Route::get('index',[
+    'as' => 'index', 'uses' => 'FrontController@indexUsuario'
+]);
 
 Route::get('registrarse',[
-    'as' => 'registrare', 'uses' => 'UsuarioController@create'
+    'as' => 'registrarse', 'uses' => 'UsuarioController@create'
 ]);
 
 Route::resource('usuario','UsuarioController');
