@@ -2,7 +2,19 @@
 <div id="wrapper">
 
     <!-- Navigation -->
-    @extends('layouts.menuInvitado')
+    @if(Auth::user())
+    <?php 
+    $variable = "layouts.menuUsuario";
+    ?>
+    @else
+
+    <?php 
+    $variable = "layouts.menuInvitado";
+    ?>
+    @endif
+    @extends($variable)
+
+    
     
     @section('content')
 
