@@ -40,26 +40,26 @@
                     {!! Form::open(array('route' => 'proyecto.store', 'method'=>'POST')) !!}
                        
                         <div class="form-group col-lg-12">
-                        	<div class="col-lg-3">{!!Form::label('Codigo de proyecto:')!!}</div>
-                        	<div class="col-lg-4">
-                        	{!!$count!!}
-                        	</div>
+                            <div class="col-lg-3">{!!Form::label('Codigo de proyecto:')!!}</div>
+                            <div class="col-lg-4">
+                            {!!$count!!}
+                            </div>
                         </div>
                         <div class="form-group col-lg-12">
-                        	<div class="col-lg-3">{!!Form::label('Nombre del proyecto:')!!}</div>
-                        	<div class="col-lg-8">
-                        	{!!Form::text('nombreProyecto',null,['class'=>'form-control', 'required', 'placeholder'=>'Nombre de proyecto'])!!}
-                        	</div>
+                            <div class="col-lg-3">{!!Form::label('Nombre del proyecto:')!!}</div>
+                            <div class="col-lg-8">
+                            {!!Form::text('nombreProyecto',null,['class'=>'form-control', 'required', 'placeholder'=>'Nombre de proyecto'])!!}
+                            </div>
                         </div>
                         <div class="form-group col-lg-12">
-                        	<div class="col-lg-3">{!!Form::label('Tipo de proyecto:')!!}</div>
-                        	<div class="col-lg-4">
-                        	{!!Form::select('lista',$tipos,null,['id'=>'lista','class' => 'form-control'])!!}
-                      		</div>
-                      		<div class="col-lg-2">
-                      			<a href="/tipoProyecto/create" class="btn btn-primary">+
-                      			</a>
-                      		</div>
+                            <div class="col-lg-3">{!!Form::label('Tipo de proyecto:')!!}</div>
+                            <div class="col-lg-4">
+                            {!!Form::select('lista',$tipos,null,['id'=>'lista','class' => 'form-control'])!!}
+                            </div>
+                            <div class="col-lg-2">
+                                <a href="/tipoProyecto/create" class="btn btn-primary">+
+                                </a>
+                            </div>
                         </div>
                          <div class="form-group col-lg-12">
                             <div class="col-lg-3">{!!Form::label('Descripcion del proyecto:')!!}</div>
@@ -68,24 +68,24 @@
                             </div>
                         </div>
                         <div class="form-group col-lg-12">
-                        	<div class="col-lg-3">{!!Form::label('Fecha de inicio:')!!}</div>
-                        	<div class="col-lg-4">
-                        	<!-- {!!Form::selectRange('number', 10, 20)!!}
-                        	{!!Form::selectMonth('month')!!} -->
-                        	
-                        	{!!Form::input('date', 'fechaInicio',null,['class' => 'form-control'])!!}
-                        	
-                        	</div>
+                            <div class="col-lg-3">{!!Form::label('Fecha de inicio:')!!}</div>
+                            <div class="col-lg-4">
+                            <!-- {!!Form::selectRange('number', 10, 20)!!}
+                            {!!Form::selectMonth('month')!!} -->
+                            
+                            {!!Form::input('date', 'fechaInicio',null,['class' => 'form-control'])!!}
+                            
+                            </div>
                         </div>
                         <div class="form-group col-lg-12">
-                        	<div class="col-lg-3">{!!Form::label('Fecha de Fin:')!!}</div>
-                        	<div class="col-lg-4">
-                        	<!-- {!!Form::selectRange('number', 10, 20)!!}
-                        	{!!Form::selectMonth('month')!!} -->
-                        	
-                        	{!!Form::input('date', 'fechaFin',null,['class' => 'form-control'])!!}
-                        	
-                        	</div>
+                            <div class="col-lg-3">{!!Form::label('Fecha de Fin:')!!}</div>
+                            <div class="col-lg-4">
+                            <!-- {!!Form::selectRange('number', 10, 20)!!}
+                            {!!Form::selectMonth('month')!!} -->
+                            
+                            {!!Form::input('date', 'fechaFin',null,['class' => 'form-control'])!!}
+                            
+                            </div>
                         </div>
                         <div class="col-lg-12">
                         <div class="col-lg-3"></div>

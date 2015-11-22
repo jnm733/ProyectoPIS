@@ -23,8 +23,11 @@ Route::get('registrarse',[
 ]);
 
 Route::resource('usuario','UsuarioController');
-
-Route::resource('login','LogController');
 Route::resource('proyecto','ProyectoController');
 Route::resource('tipoProyecto','TipoProyectoController');
+
+Route::resource('riesgo','RiesgoController');
+Route::resource('categoria','CategoriaRiesgoController');
+
+Route::resource('login','LogController');
 Route::get('logout','LogController@logout');
