@@ -45,7 +45,11 @@ class RiesgoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $probabilidad = $request['decena'].$request['unidad'];
+
+        $tipo = $request['tipo'];
+        $value = 'tipo: '.$request['tipo'].', impacto: '.$request['impacto'] ;
+        return $tipo;
     }
 
     /**

@@ -29,7 +29,7 @@
                         <div class="col-lg-12">
                         <div class="col-lg-3"></div>
                         <div class="col-lg-1">{!!Form::submit('Crear',['class'=>'btn btn-primary'])!!}</div>
-                        <div class="col-lg-1"><a href="/proyecto/create" class="btn btn-primary">Cancelar
+                        <div class="col-lg-1"><a href="/riesgo/create" class="btn btn-primary">Cancelar
                                 </a></div>
                         </div>
                         {!! Form::close() !!}
