@@ -61,7 +61,7 @@
                             </div>
                             <div class="col-lg-3">{!!Form::label('Tipo de riesgo:')!!}</div>
                             <div class="col-lg-3">
-                            {!!Form::text('nombreProyecto',null,['class'=>'form-control', 'required', 'placeholder'=>'Tipo de riesgo'])!!}
+                            {!!Form::text('tipoRiesgo',null,['class'=>'form-control', 'required', 'placeholder'=>'Tipo de riesgo'])!!}
                             </div>
                         </div>
 

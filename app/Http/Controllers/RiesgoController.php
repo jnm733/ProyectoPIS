@@ -5,6 +5,7 @@ namespace ProyectoPIS\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use ProyectoPIS\CategoriaRiesgo;
+use ProyectoPIS\Riesgo;
 use ProyectoPIS\Http\Requests;
 use ProyectoPIS\Http\Controllers\Controller;
 
@@ -45,11 +46,20 @@ class RiesgoController extends Controller
      */
     public function store(Request $request)
     {
-        $probabilidad = $request['decena'].$request['unidad'];
+        $prob = $request['decena'].$request['unidad'];
+        $id = DB::table('categoriaRiesgo')->where('nombreCategoria',$tipo)->value('id');
 
-        $tipo = $request['tipo'];
-        $value = 'tipo: '.$request['tipo'].', impacto: '.$request['impacto'] ;
-        return $tipo;
+        Riesgo::create([
+            'nombreRiesgo' => $request['nombreRiesgo'],
+            'descripcion' => $request['descripcion'],
+            'probRiesgo' => $prob,
+            'factoresRiesgo' => $request['factores'],
+            'reduccionRiesgo' => $request['descripcion'],
+            'supervisionRiesgo' => $request['descripcion'],
+            'impacto' => $request['descripcion'],
+            'categoria_riesgo_id' => $id,
+            ]);
+        return redirect()->route('indexUsuario');
     }
 
     /**
