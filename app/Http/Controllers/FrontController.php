@@ -9,6 +9,10 @@ use ProyectoPIS\Http\Controllers\Controller;
 
 class FrontController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth',['only' => 'indexUsuario']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -24,7 +28,6 @@ class FrontController extends Controller
 
     public function indexUsuario()
     {
-
         return view('indexUsuario');
     }
 

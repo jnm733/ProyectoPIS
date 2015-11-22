@@ -22,19 +22,11 @@
                 <div class="row">
                     <div class="col-lg-12 text-center">
                         <h1 class="page-header">
-                            <br><b>Creación de un nuevo Proyecto de {!!Auth::user()->name!!}</b>
+                            <br><b>Creación de un nuevo riesgo</b>
                         </h1>
                     </div>
                 </div>
-                @if (count($errors) > 0)
-                <div class="alert alert-danger" role="alert">
-                        <ul>
-                           @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
+                @include('errors.form')
 
                 <div class="row">
                     {!! Form::open(array('route' => 'proyecto.store', 'method'=>'POST')) !!}
