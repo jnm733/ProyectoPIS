@@ -32,7 +32,7 @@ class ProyectoController extends Controller
      */
     public function create()
     {
-        $count = DB::table('proyecto')->count();
+        $count = DB::table('proyecto')->max('id');
         $count = $count + 1;
         $tipos = TipoProyecto::lists('tipo');
         return view('proyecto.create',compact('tipos','count'));
@@ -56,7 +56,8 @@ class ProyectoController extends Controller
             'descripcion' => $request['descripcion'],
             'tipo_proyecto_id' => $id,
             ]);
-        return redirect()->route('asociarRiesgos',compact('id'));
+        $count = DB::table('proyecto')->max('id');
+        return redirect()->route('asociarRiesgos',compact('count'));
     }
 
     /**

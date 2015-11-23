@@ -33,7 +33,8 @@ class RiesgoController extends Controller
     public function create()
     {
         
-        $count = DB::table('riesgo')->count();
+        $count = DB::table('riesgo')->max('id');
+        $count = $count+1;
         $tipos = CategoriaRiesgo::lists('nombreCategoria');
         return view('riesgo.create',compact('tipos','count'));
     }
