@@ -22,6 +22,11 @@ Route::get('registrarse',[
     'as' => 'registrarse', 'uses' => 'UsuarioController@create'
 ]);
 
+Route::get('asociarRiesgos/{id}',[
+    'as' => 'asociarRiesgos', 'uses' => 'AsociarRiesgosController@index'
+]);
+
+Route::resource('asociarRiesgos','AsociarRiesgosController');
 Route::resource('usuario','UsuarioController');
 Route::resource('proyecto','ProyectoController');
 Route::resource('tipoProyecto','TipoProyectoController');

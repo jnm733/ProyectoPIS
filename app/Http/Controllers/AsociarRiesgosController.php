@@ -3,33 +3,24 @@
 namespace ProyectoPIS\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use DB;
+use ProyectoPIS\Proyecto;
+use ProyectoPIS\Riesgo;
 use ProyectoPIS\Http\Requests;
 use ProyectoPIS\Http\Controllers\Controller;
 
-class CategoriaRiesgo extends Controller
+class AsociarRiesgosController extends Controller
 {
-    public function __construct(){
-        $this->middleware('auth');
-    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $proyecto = DB::table('proyecto')->where('id',$id)->value('nombreProyecto');
+        $riesgos = Riesgo::lists('nombreRiesgo');
+        return view('riesgo.asociarRiesgos',compact('id','proyecto','riesgos'));
     }
 
     /**
@@ -40,9 +31,15 @@ class CategoriaRiesgo extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $riesgos = $request['riesgos'];
+        $proyecto = Proyecto::find($request['idProyecto']);
+        foreach ($riesgos as $riesgo) {
+            $idRiesgo = DB::table('riesgo')->where('nombreRiesgo',$riesgo)->value('id');
+            $proyecto->riesgos()->attach($idRiesgo);
+        }
 
+        return redirect()->route('index');
+}
     /**
      * Display the specified resource.
      *

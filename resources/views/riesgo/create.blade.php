@@ -11,12 +11,6 @@
                     $('#crear').click(function(){ 
                         var value = $("#lista :selected").text();
                         document.getElementById("tipo").value= value;
-                        value = $("#unidad :selected").text();
-                        document.getElementById("unidadHidden").value= value;
-                        value = $("#decena :selected").text();
-                        document.getElementById("decenaHidden").value= value;
-                        value = $("#impacto :selected").text();
-                        document.getElementById("impactoHidden").value= value;
                     });
         });
     </script>
