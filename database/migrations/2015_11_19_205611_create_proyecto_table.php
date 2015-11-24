@@ -28,6 +28,7 @@ class CreateProyectoTable extends Migration
            $table->increments('id');
            $table->integer('user_id')->unsigned();
            $table->integer('proyecto_id')->unsigned();
+           $table->boolean('jefe');
 
            $table->foreign('user_id')->references('id')->on('users');
            $table->foreign('proyecto_id')->references('id')->on('proyecto');

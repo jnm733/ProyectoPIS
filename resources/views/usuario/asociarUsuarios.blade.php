@@ -22,23 +22,23 @@
                 <div class="row">
                     <div class="col-lg-12 text-center">
                         <h1 class="page-header">
-                            <br><b>Asociar riesgos a {!!$proyecto!!}</b>
+                            <br><b>Asociar usuarios a {!!$proyecto!!}</b>
                         </h1>
                     </div>
                 </div>
                 @include('errors.form')
                 <div class="row">
-                    {!! Form::open(array('route' => 'asociarRiesgos.store', 'method'=>'POST')) !!}                        		
-								@foreach ($riesgos->all() as $riesgo)
+                    {!! Form::open(array('route' => 'asociarUsuarios.store', 'method'=>'POST')) !!}                        		
+								@foreach ($usuarios->all() as $usuario)
 								<div class="form-group col-lg-12">
 									<div class="col-lg-3">
-                                        @if($asociados->contains($riesgo->id))
-                                        {!!Form::checkbox('riesgos[]',$riesgo->id,true)!!}
+                                        @if($asociados->contains($usuario->id))
+                                        {!!Form::checkbox('usuarios[]',$usuario->id,true)!!}
                                         @else
-                                        {!!Form::checkbox('riesgos[]',$riesgo->id,false)!!}
+                                        {!!Form::checkbox('usuarios[]',$usuario->id,false)!!}
                                         @endif
 										
-                						{!!Form::label($riesgo->nombreRiesgo)!!}
+                						{!!Form::label($usuario->name)!!}
                 					</div>
                 				</div>
             					@endforeach
@@ -47,11 +47,8 @@
                         <div class="col-lg-12">
                             <div class="col-lg-3"></div>
                                 <input type="hidden" id="idProyecto" name="idProyecto" value={{$id}}>
-                            <div class="col-lg-1">
-                                <a href="/riesgo/create" class="btn btn-primary">+
-                                </a>
-                            </div>
-                            <div class="col-lg-2">{!!Form::submit('Asociar riesgos',['id'=>'crear','class'=>'btn btn-primary'])!!}</div>
+                            
+                            <div class="col-lg-2">{!!Form::submit('Asociar usuarios',['id'=>'crear','class'=>'btn btn-primary'])!!}</div>
                             <div class="col-lg-1">
                                 <a href="/index" class="btn btn-primary">Cancelar
                                 </a>

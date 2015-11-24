@@ -23,7 +23,7 @@
                         <div class="form-group col-lg-12">
                         	<div class="col-lg-3">{!!Form::label('Tipo de Proyecto:')!!}</div>
                         	<div class="col-lg-8">
-                        	{!!Form::text('nombreCategoria',null,['class'=>'form-control', 'required', 'placeholder'=>'Tipo de proyecto'])!!}
+                        	{!!Form::text('tipo',null,['class'=>'form-control', 'required', 'placeholder'=>'Tipo de proyecto'])!!}
                         	</div>
                         </div>
                         <div class="col-lg-12">

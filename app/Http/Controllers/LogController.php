@@ -45,7 +45,16 @@ class LogController extends Controller
      */
     public function store(LoginRequest $request)
     {
-        if(Auth::attempt(['name' => $request['nombreUsuario'],'password' => $request['password']])){
+        
+        if($request['remember'] == 'recordar'){
+            $recordar = true;
+        }else{
+            $recordar = false;
+            
+        }
+        
+
+        if(Auth::attempt(['name' => $request['nombreUsuario'],'password' => $request['password']],$recordar)){
             return redirect()->route('index');
         }
         Session::flash('message-error','Datos incorrectos');

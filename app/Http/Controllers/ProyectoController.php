@@ -4,6 +4,8 @@ namespace ProyectoPIS\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use Auth;
+use Session;
 use ProyectoPIS\Http\Requests;
 use ProyectoPIS\Http\Controllers\Controller;
 use ProyectoPIS\TipoProyecto;
@@ -46,9 +48,11 @@ class ProyectoController extends Controller
      */
     public function store(Request $request)
     {
+        //Manipular valores para su insercion
         $tipo = $request['tipo'];
         $id = DB::table('tipoProyecto')->where('tipo',$tipo)->value('id');
-
+        
+        //creando un nuevo registro en la tabla
         Proyecto::create([
             'nombreProyecto' => $request['nombreProyecto'],
             'fechaInicio' => $request['fechaInicio'],
@@ -57,7 +61,15 @@ class ProyectoController extends Controller
             'tipo_proyecto_id' => $id,
             ]);
         $count = DB::table('proyecto')->max('id');
+        
+        //creando una relacion proyecto-usuario
+        $proyecto = Proyecto::find($count);
+        $auth = Auth::user()->id;
+        $proyecto->users()->attach($auth, array('jefe' => true));
+
         return redirect()->route('asociarRiesgos',compact('count'));
+
+       
     }
 
     /**

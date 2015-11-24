@@ -4,12 +4,12 @@ namespace ProyectoPIS\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
-use ProyectoPIS\Proyecto;
-use ProyectoPIS\Riesgo;
 use ProyectoPIS\Http\Requests;
+use ProyectoPIS\Proyecto;
+use ProyectoPIS\User;
 use ProyectoPIS\Http\Controllers\Controller;
 
-class AsociarRiesgosController extends Controller
+class AsociarUsuariosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,13 +18,22 @@ class AsociarRiesgosController extends Controller
      */
     public function index($id)
     {
-        
         $proyecto = DB::table('proyecto')->where('id',$id)->value('nombreProyecto');
-        $asociados = Proyecto::find($id)->riesgos;
-        
-        $riesgos = Riesgo::All();
+        $asociados = Proyecto::find($id)->users;
+        $usuarios = User::All();
 
-        return view('riesgo.asociarRiesgos',compact('id','proyecto','riesgos','asociados'));
+        return view('usuario.asociarUsuarios',compact('id','proyecto','usuarios','asociados'));
+
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
     }
 
     /**
@@ -36,13 +45,13 @@ class AsociarRiesgosController extends Controller
     public function store(Request $request)
     {
         //Array de asociados actualmente
-        $riesgos = $request['riesgos'];
+        $usuarios = $request['usuarios'];
         $proyecto = Proyecto::find($request['idProyecto']);
-        $asociados = $proyecto->riesgos()->get();
+        $asociados = $proyecto->users()->get();
 
         //Array de asociados al principio
         $idAsociados = array();
-        $idRiesgos = array();
+        $idUsuarios = array();
         //Pasamos los registros de la tabla a valores de id
         foreach ($asociados as $asociado) {
             array_push ( $idAsociados , ''.$asociado->id.'' );
@@ -50,20 +59,21 @@ class AsociarRiesgosController extends Controller
         
         //Recorre el array de id de riesgos asociados
         foreach ($idAsociados as $asociado) {
-            if (!in_array($asociado, $riesgos)) {//Si el array de riesgos asociados actual no contiene el riesgo asociado
-                $proyecto->riesgos()->detach($asociado);//Lo desvincula del proyecto
+            if (!in_array($asociado, $usuarios)) {//Si el array de riesgos asociados actual no contiene el riesgo asociado
+                $proyecto->users()->detach($asociado);//Lo desvincula del proyecto
             }       
         }
 
         //Recorremos el array con los nuevos riesgos asociados
-        foreach ($riesgos as $riesgo) {
-            if(!$asociados->contains($riesgo)){//Si el array de riesgos asociados no contiene el riesgo
-                $proyecto->riesgos()->attach($riesgo);//Se vincula al proyecto
+        foreach ($usuarios as $usuario) {
+            if(!$asociados->contains($usuario)){//Si el array de riesgos asociados no contiene el riesgo
+                $proyecto->users()->attach($usuario);//Se vincula al proyecto
             }
 
         }
         return redirect()->route('index');
-}
+    }
+
     /**
      * Display the specified resource.
      *

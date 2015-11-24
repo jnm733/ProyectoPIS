@@ -65,7 +65,11 @@
 
             <div class="form-group">
                 {!! Form::password('password', ['class'=>'form-control', 'required', 'placeholder'=>'Contraseña']) !!}}
+                
+                {!!Form::checkbox('remember','recordar',false)!!}
+                {!!Form::label('recordarmelbl','Recordar')!!}
             </div>
+            
             {!!Form::submit('Iniciar Sesión',['class'=>'btn center-block btn-primary'])!!}
             {!! Form::close() !!}
         </ul>

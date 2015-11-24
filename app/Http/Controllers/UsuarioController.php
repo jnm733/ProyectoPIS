@@ -10,9 +10,11 @@ use ProyectoPIS\Http\Controllers\Controller;
 use ProyectoPIS\User;
 class UsuarioController extends Controller
 {
+    /*
     public function __construct(){
-        $this->middleware('auth');
+        $this->middleware('auth',['only' => 'index']);
     }
+    */
     /**
      * Display a listing of the resource.
      *
