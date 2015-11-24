@@ -4,6 +4,7 @@ namespace ProyectoPIS\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use Session;
 use ProyectoPIS\Http\Requests;
 use ProyectoPIS\Proyecto;
 use ProyectoPIS\User;
@@ -48,6 +49,13 @@ class AsociarUsuariosController extends Controller
         $usuarios = $request['usuarios'];
         $proyecto = Proyecto::find($request['idProyecto']);
         $asociados = $proyecto->users()->get();
+        
+        //Si no hay usuarios asociados
+        $count = count($usuarios);
+        if($count < 1){
+            Session::flash('message-error','Debe asociar un usuario');
+            return redirect()->route('/');
+        }
 
         //Array de asociados al principio
         $idAsociados = array();
