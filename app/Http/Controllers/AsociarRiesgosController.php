@@ -35,16 +35,8 @@ class AsociarRiesgosController extends Controller
      */
     public function store(Request $request)
     {
-        $impacto = $request['impacto'];
-        $riesgos = $request['riesgos'];
-        $prob = $request['prob'];
+        $idProyecto = $request['idProyecto'];
 
-        $idRiesgo = $riesgos[0];
-        $numImpacto = $idRiesgo-1;
-        $primerProb = $prob[$numImpacto];
-        $primerImpacto = $impacto[$numImpacto];
-
-        dd('impacto',$impacto,'riesgos',$riesgos,'prob',$prob, 'Riesgo-Impacto-prob',$idRiesgo,$primerImpacto,$primerProb);
         //Array de asociados actualmente
         $riesgos = $request['riesgos'];
         $proyecto = Proyecto::find($request['idProyecto']);
@@ -72,15 +64,21 @@ class AsociarRiesgosController extends Controller
                 $proyecto->riesgos()->detach($asociado);//Lo desvincula del proyecto
             }       
         }
+        //Array con el impacto de todos los riesgos habidos y por haber
+        $impacto = $request['impacto'];
+        //Array con la probabilidad de todos los riesgos habidos y por haber
+        $prob = $request['prob'];
 
+        $pos = 0;
         //Recorremos el array con los nuevos riesgos asociados
         foreach ($riesgos as $riesgo) {
             if(!$asociados->contains($riesgo)){//Si el array de riesgos asociados no contiene el riesgo
-                $proyecto->riesgos()->attach($riesgo);//Se vincula al proyecto
+                $pos = $riesgo-1;
+                $proyecto->riesgos()->attach($riesgo, array('probRiesgo' => $prob[$pos],'impactoRiesgo' => $impacto[$pos]));//Se vincula al proyecto
             }
 
         }
-        return redirect()->route('index');
+        return redirect()->route('lineacorte',compact('idProyecto'));
 }
     /**
      * Display the specified resource.

@@ -60,14 +60,14 @@ class ProyectoController extends Controller
             'descripcion' => $request['descripcion'],
             'tipo_proyecto_id' => $id,
             ]);
-        $count = DB::table('proyecto')->max('id');
+        $idProyecto = DB::table('proyecto')->max('id');
         
         //creando una relacion proyecto-usuario
         $proyecto = Proyecto::find($count);
         $auth = Auth::user()->id;
         $proyecto->users()->attach($auth, array('jefe' => true));
 
-        return redirect()->route('asociarRiesgos',compact('count'));
+        return redirect()->route('asociarUsuarios',compact('idProyecto'));
 
        
     }

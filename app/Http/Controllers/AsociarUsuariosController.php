@@ -45,6 +45,8 @@ class AsociarUsuariosController extends Controller
      */
     public function store(Request $request)
     {
+        $idProyecto = $request['idProyecto'];
+        
         //Array de asociados actualmente
         $usuarios = $request['usuarios'];
         $proyecto = Proyecto::find($request['idProyecto']);
@@ -79,7 +81,7 @@ class AsociarUsuariosController extends Controller
             }
 
         }
-        return redirect()->route('index');
+        return redirect()->route('asociarRiesgos',compact('idProyecto'));
     }
 
     /**

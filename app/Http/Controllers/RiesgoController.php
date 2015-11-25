@@ -4,6 +4,7 @@ namespace ProyectoPIS\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use ProyectoPIS\Proyecto;
 use ProyectoPIS\CategoriaRiesgo;
 use ProyectoPIS\Riesgo;
 use ProyectoPIS\Http\Requests;
@@ -30,9 +31,25 @@ class RiesgoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
+    public function corte($id){
+        $proyecto = Proyecto::find($id)->nombreProyecto;
+        $riesgos = Proyecto::find($id)->riesgos;
+        $lista = array();
+        $prueba = '';
+        foreach ($proyecto->riesgos as $riesgo)
+        {
+            $prueba = $riesgo->pivot->riesgo_id;
+        }
+        
+        dd($prueba);
+
+        return view('riesgo.lineacorte',compact('id'));
+    }
+
     public function create()
     {
-        
+
         $count = DB::table('riesgo')->max('id');
         $count = $count+1;
         $tipos = CategoriaRiesgo::lists('nombreCategoria');
@@ -47,7 +64,7 @@ class RiesgoController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $id = DB::table('categoriaRiesgo')->where('nombreCategoria',$request['tipo'])->value('id');
 
         Riesgo::create([

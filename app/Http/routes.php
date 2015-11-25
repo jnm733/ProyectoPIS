@@ -26,6 +26,10 @@ Route::get('asociarRiesgos/{id}',[
     'as' => 'asociarRiesgos', 'uses' => 'AsociarRiesgosController@index'
 ]);
 
+Route::get('lineacorte/{id}',[
+    'as' => 'lineacorte', 'uses' => 'RiesgoController@corte'
+]);
+
 Route::get('asociarUsuarios/{id}',[
     'as' => 'asociarUsuarios', 'uses' => 'AsociarUsuariosController@index'
 ]);

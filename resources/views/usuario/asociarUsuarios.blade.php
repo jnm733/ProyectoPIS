@@ -50,8 +50,7 @@
                         
                         <div class="col-lg-12">
                             <div class="col-lg-3"></div>
-                                <input type="hidden" id="idProyecto" name="idProyecto" value={{$id}}>
-                            
+                                {!!Form::hidden('idProyecto',$id)!!}
                             <div class="col-lg-2">{!!Form::submit('Asociar usuarios',['id'=>'crear','class'=>'btn btn-primary'])!!}</div>
                             <div class="col-lg-1">
                                 <a href="/index" class="btn btn-primary">Cancelar
