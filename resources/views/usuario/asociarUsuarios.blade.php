@@ -33,7 +33,11 @@
 								<div class="form-group col-lg-12">
 									<div class="col-lg-3">
                                         @if($asociados->contains($usuario->id))
-                                        {!!Form::checkbox('usuarios[]',$usuario->id,true)!!}
+                                            @if($usuario->name == Auth::user()->name)
+                                                {!!Form::checkbox('usuarios[]',$usuario->id,true,array('disabled'))!!}
+                                            @else 
+                                                {!!Form::checkbox('usuarios[]',$usuario->id,true)!!}
+                                            @endif
                                         @else
                                         {!!Form::checkbox('usuarios[]',$usuario->id,false)!!}
                                         @endif

@@ -14,7 +14,7 @@
                     });
         });
     </script>
-        <div id="page-wrapper">
+        <div id="page-wrapper-2">
 
             <div class="container-fluid" style="height: 100%">
 
@@ -56,25 +56,6 @@
                             <div class="col-lg-3">{!!Form::label('Tipo de riesgo:')!!}</div>
                             <div class="col-lg-3">
                             {!!Form::text('tipoRiesgo',null,['class'=>'form-control', 'required', 'placeholder'=>'Tipo de riesgo'])!!}
-                            </div>
-                        </div>
-
-                        <div class="form-group col-lg-12">
-                            <div class="col-lg-3">{!!Form::label('Probabilidad del riesgo:')!!}</div>
-                            <div class="col-lg-3">
-                                <div class="col-lg-5">
-                                    {!!Form::selectRange('decena', 0, 9,null,['class'=>'form-control', null,'required'])!!}
-                                </div>
-                                <div class="col-lg-5">
-                                    {!!Form::selectRange('unidad', 0, 9,null,['class'=>'form-control', null,'required'])!!}
-                                </div>
-                                <div class="col-lg-1">
-                                    %
-                                </div>
-                            </div>
-                            <div class="col-lg-3">{!!Form::label('Impacto del riesgo:')!!}</div>
-                            <div class="col-lg-3">
-                            {!!Form::select('impacto', array('despreciable' => 'Despreciable', 'critico' => 'Critico'),null,['class'=>'form-control', null,'required'])!!}
                             </div>
                         </div>
                         

@@ -8,7 +8,7 @@ class Riesgo extends Model
 {
     protected $table = 'riesgo';
 
-    protected $fillable = ['nombreRiesgo', 'descripcion', 'probRiesgo', 'factoresRiesgo', 'reduccionRiesgo', 'supervisionRiesgo', 'impactoRiesgo', 'categoria_riesgo_id'];
+    protected $fillable = ['nombreRiesgo', 'descripcion', 'factoresRiesgo', 'reduccionRiesgo', 'supervisionRiesgo', 'categoria_riesgo_id'];
 
 
     public function categoriaRiesgo()

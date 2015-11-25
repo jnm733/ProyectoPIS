@@ -41,6 +41,8 @@ class CreateProyectoTable extends Migration
            $table->increments('id');
            $table->integer('proyecto_id')->unsigned();
            $table->integer('riesgo_id')->unsigned();
+           $table->integer('probRiesgo');
+           $table->enum('impactoRiesgo',['Catastrofico', 'Critico', 'Marginal', 'Despreciable',]);
 
            $table->foreign('proyecto_id')->references('id')->on('proyecto');
            $table->foreign('riesgo_id')->references('id')->on('riesgo');

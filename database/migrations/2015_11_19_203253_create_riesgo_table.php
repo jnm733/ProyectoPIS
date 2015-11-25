@@ -16,11 +16,9 @@ class CreateRiesgoTable extends Migration
         $table->increments('id');
         $table->string('nombreRiesgo');
         $table->string('descripcion');
-        $table->integer('probRiesgo');
         $table->string('factoresRiesgo');
         $table->string('reduccionRiesgo');
         $table->string('supervisionRiesgo');
-        $table->enum('impactoRiesgo',['Catastrofico', 'Critico', 'Marginal', 'Despreciable',]);
         $table->integer('categoria_riesgo_id')->unsigned();
 
         $table->foreign('categoria_riesgo_id')->references('id')->on('categoriaRiesgo');

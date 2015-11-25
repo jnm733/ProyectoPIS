@@ -110,6 +110,8 @@
 <script src="/js/plugins/morris/morris.min.js"></script>
 <script src="/js/plugins/morris/morris-data.js"></script>
 
+<script src="https://code.jquery.com/jquery.js"></script>
+
 </body>
 
 </html>

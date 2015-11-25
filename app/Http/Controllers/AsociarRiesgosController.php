@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use ProyectoPIS\Proyecto;
 use ProyectoPIS\Riesgo;
+use ProyectoPIS\CategoriaRiesgo;
 use ProyectoPIS\Http\Requests;
 use ProyectoPIS\Http\Controllers\Controller;
 
@@ -18,7 +19,6 @@ class AsociarRiesgosController extends Controller
      */
     public function index($id)
     {
-        
         $proyecto = DB::table('proyecto')->where('id',$id)->value('nombreProyecto');
         $asociados = Proyecto::find($id)->riesgos;
         
@@ -35,10 +35,28 @@ class AsociarRiesgosController extends Controller
      */
     public function store(Request $request)
     {
+        $impacto = $request['impacto'];
+        $riesgos = $request['riesgos'];
+        $prob = $request['prob'];
+
+        $idRiesgo = $riesgos[0];
+        $numImpacto = $idRiesgo-1;
+        $primerProb = $prob[$numImpacto];
+        $primerImpacto = $impacto[$numImpacto];
+
+        dd('impacto',$impacto,'riesgos',$riesgos,'prob',$prob, 'Riesgo-Impacto-prob',$idRiesgo,$primerImpacto,$primerProb);
         //Array de asociados actualmente
         $riesgos = $request['riesgos'];
         $proyecto = Proyecto::find($request['idProyecto']);
         $asociados = $proyecto->riesgos()->get();
+
+        $count = count($riesgos);
+        if($count < 1){
+            foreach ($asociados as $asociado) {
+                $proyecto->riesgos()->detach($asociado);
+            }
+            return redirect()->route('index');
+        }
 
         //Array de asociados al principio
         $idAsociados = array();

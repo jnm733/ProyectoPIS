@@ -39,7 +39,7 @@
                         <div class="form-group col-lg-12">
                         	<div class="col-lg-3">{!!Form::label('Nombre del proyecto:')!!}</div>
                         	<div class="col-lg-8">
-                        	{!!Form::text('nombreProyecto',null,['class'=>'form-control', 'required', 'placeholder'=>'Nombre de proyecto'])!!}
+                        	{!!Form::text('nombreProyecto',null,['class'=>'form-control', 'placeholder'=>'Nombre de proyecto'])!!}
                         	</div>
                         </div>
                         <div class="form-group col-lg-12">
@@ -48,9 +48,10 @@
                         	{!!Form::select('lista',$tipos,null,['id'=>'lista','class' => 'form-control'])!!}
                       		</div>
                       		<div class="col-lg-2">
-                      			<a href="/tipoProyecto/create" class="btn btn-primary">+
-                      			</a>
-                      		</div>
+                            
+                      			<a href="/tipoProyecto/create" class="btn btn-primary">+</a>
+
+                            </div>
                         </div>
                          <div class="form-group col-lg-12">
                             <div class="col-lg-3">{!!Form::label('Descripcion del proyecto:')!!}</div>
@@ -81,7 +82,8 @@
                         <div class="col-lg-12">
                         <div class="col-lg-3"></div>
                         <input type="hidden" id="tipo" name="tipo">
-                        <div class="col-lg-2">{!!Form::submit('Asociar riesgos',['id'=>'crear','class'=>'btn btn-primary'])!!}</div>
+                        
+                        <div class="col-lg-2">{!!Form::submit('Siguiente',['id'=>'crear','class'=>'btn btn-primary'])!!}</div>
                         <div class="col-lg-1"><a href="/index" class="btn btn-primary">Cancelar
                                 </a></div>
                         </div>

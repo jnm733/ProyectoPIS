@@ -47,17 +47,15 @@ class RiesgoController extends Controller
      */
     public function store(Request $request)
     {
-        $prob = $request['decena'].$request['unidad'];
+        
         $id = DB::table('categoriaRiesgo')->where('nombreCategoria',$request['tipo'])->value('id');
 
         Riesgo::create([
             'nombreRiesgo' => $request['nombreRiesgo'],
             'descripcion' => $request['descripcion'],
-            'probRiesgo' => $prob,
             'factoresRiesgo' => $request['factores'],
             'reduccionRiesgo' => $request['descripcion'],
             'supervisionRiesgo' => $request['descripcion'],
-            'impacto' => $request['descripcion'],
             'categoria_riesgo_id' => $id,
             ]);
         return redirect()->route('index');

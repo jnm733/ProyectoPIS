@@ -20,6 +20,7 @@
 
                 <div class="row">
                     {!! Form::open(array('route' => 'categoria.store', 'method'=>'POST')) !!}
+
                         <div class="form-group col-lg-12">
                         	<div class="col-lg-3">{!!Form::label('Nombre de Categoria:')!!}</div>
                         	<div class="col-lg-8">
@@ -27,7 +28,6 @@
                         	</div>
                         </div>
                         <div class="col-lg-12">
-                        <div class="col-lg-3"></div>
                         <div class="col-lg-1">{!!Form::submit('Crear',['class'=>'btn btn-primary'])!!}</div>
                         <div class="col-lg-1"><a href="/riesgo/create" class="btn btn-primary">Cancelar
                                 </a></div>

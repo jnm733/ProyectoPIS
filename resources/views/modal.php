@@ -17,7 +17,7 @@
                 <div class="modal-content">
                     
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">$times;</button>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X;</button>
                         <h4>Hola esta es mi primera ventana modal</h4>
                     </div>
 
@@ -26,7 +26,7 @@
                     </div>
 
                     <div class="modal-footer">
-                    	<button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+                    	<button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar
                     </div>
                 </div>
             </div>
