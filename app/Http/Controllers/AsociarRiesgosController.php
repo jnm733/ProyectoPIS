@@ -12,6 +12,13 @@ use ProyectoPIS\Http\Controllers\Controller;
 
 class AsociarRiesgosController extends Controller
 {
+
+    public $var = "hola";
+    public function prueba()
+    {
+        return $this->var;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -36,6 +43,10 @@ class AsociarRiesgosController extends Controller
     public function store(Request $request)
     {
         $idProyecto = $request['idProyecto'];
+        if($request['crear']) 
+        return redirect()->route('riesgo',compact('idProyecto'));
+
+        
 
         //Array de asociados actualmente
         $riesgos = $request['riesgos'];
@@ -47,6 +58,7 @@ class AsociarRiesgosController extends Controller
             foreach ($asociados as $asociado) {
                 $proyecto->riesgos()->detach($asociado);
             }
+            //Cambiar
             return redirect()->route('index');
         }
 

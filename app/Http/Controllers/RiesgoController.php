@@ -9,6 +9,7 @@ use ProyectoPIS\CategoriaRiesgo;
 use ProyectoPIS\Riesgo;
 use ProyectoPIS\Http\Requests;
 use ProyectoPIS\Http\Controllers\Controller;
+use ProyectoPIS\Http\Controllers\AsociarRiesgosController;
 
 class RiesgoController extends Controller
 {
@@ -23,8 +24,11 @@ class RiesgoController extends Controller
      */
     public function index()
     {
-        //
+
     }
+
+    
+
 
     /**
      * Show the form for creating a new resource.
@@ -32,28 +36,59 @@ class RiesgoController extends Controller
      * @return \Illuminate\Http\Response
      */
     
-    public function corte($id){
-        $proyecto = Proyecto::find($id)->nombreProyecto;
-        $riesgos = Proyecto::find($id)->riesgos;
+    public function corte($idProyecto){
+        $proyecto = Proyecto::find($idProyecto);
+        $nombreProyecto = $proyecto->nombreProyecto;
+        $riesgos = Proyecto::find($idProyecto)->riesgos;
+        $linea = 5;
+        
+        /*
+        $prueba1 = ['uno','dos'];
+        $prueba2 = [3,4];
+        $prueba3[] = $prueba1;
+        $prueba3[] = $prueba2;
+        dd($prueba3);
+*/
         $lista = array();
-        $prueba = '';
+        $lista2 = array();
         foreach ($proyecto->riesgos as $riesgo)
         {
-            $prueba = $riesgo->pivot->riesgo_id;
+            
+            switch ($riesgo->pivot->impactoRiesgo) {
+                case 'Catastrofico':
+                    $imp = 10;
+                    break;
+                case 'Critico':
+                    $imp = 7;
+                    break;
+                case 'Marginal':
+                    $imp = 4;
+                    break;
+                default:
+                    $imp = 1;
+                    break;
+            }
+            
+            $array = array();
+            $array[] = $riesgo->id;
+            $array[] = $riesgo->nombreRiesgo;
+            $array[] = $riesgo->pivot->impactoRiesgo;
+            $array[] = $riesgo->pivot->probRiesgo;
+            $lista = array_add($lista, $imp*($riesgo->pivot->probRiesgo) , $array);
+            
         }
-        
-        dd($prueba);
-
-        return view('riesgo.lineacorte',compact('id'));
+        arsort($lista);
+        return view('riesgo.lineacorte',compact('nombreProyecto','lista','linea'));
     }
+
+
 
     public function create()
     {
-
-        $count = DB::table('riesgo')->max('id');
-        $count = $count+1;
+        $id = DB::table('riesgo')->max('id');
+        $id = $id+1;
         $tipos = CategoriaRiesgo::lists('nombreCategoria');
-        return view('riesgo.create',compact('tipos','count'));
+        return view('riesgo.create',compact('tipos','id','idProyecto'));
     }
 
     /**
@@ -64,6 +99,8 @@ class RiesgoController extends Controller
      */
     public function store(Request $request)
     {
+        $idRiesgo = $request['idProyecto'];
+        //dd($idRiesgo);
 
         $id = DB::table('categoriaRiesgo')->where('nombreCategoria',$request['tipo'])->value('id');
 
@@ -75,7 +112,8 @@ class RiesgoController extends Controller
             'supervisionRiesgo' => $request['descripcion'],
             'categoria_riesgo_id' => $id,
             ]);
-        return redirect()->route('index');
+        
+        return redirect()->route('asociarRiesgos',compact('idRiesgo'));
     }
 
 

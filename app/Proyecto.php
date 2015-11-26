@@ -12,7 +12,7 @@ class Proyecto extends Model
 
     public function users()
     {
-        return $this->belongsToMany('ProyectoPIS\User')->withTimestamps();
+        return $this->belongsToMany('ProyectoPIS\User')->withPivot('jefe')->withTimestamps();
     }
 
     public function tipoProyecto()
@@ -22,6 +22,9 @@ class Proyecto extends Model
 
     public function riesgos()
     {
-        return $this->belongsToMany('ProyectoPIS\Riesgo')->withTimestamps();
+        //$this->belongsToMany('ProyectoPIS\Riesgo')->withTimestamps();
+
+       //return $this->belongsToMany('ProyectoPIS\Riesgo')->withPivot('probRiesgo','impactoRiesgo','createt_at','updated_at');
+       return $this->belongsToMany('ProyectoPIS\Riesgo')->withPivot('probRiesgo','impactoRiesgo')->withTimestamps();
     }
 }

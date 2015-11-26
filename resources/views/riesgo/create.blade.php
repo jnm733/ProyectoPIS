@@ -34,7 +34,6 @@
                 <div class="form-group col-lg-12">
                     <div class="col-lg-3">{!!Form::label('Codigo de riesgo:')!!}</div>
                     <div class="col-lg-3">
-                        {!!$count!!}
                     </div>
                     <div class="col-lg-3">
                         {!!Form::label('Categoria del riesgo:')!!}

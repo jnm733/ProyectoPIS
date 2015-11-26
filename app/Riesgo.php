@@ -18,7 +18,7 @@ class Riesgo extends Model
 
     public function proyectos()
     {
-        return $this->belongsToMany('ProyectoPIS\Proyecto')->withTimestamps();
+        return $this->belongsToMany('ProyectoPIS\Proyecto')->withPivot('probRiesgo','impactoRiesgo')->withTimestamps();
     }
 
 

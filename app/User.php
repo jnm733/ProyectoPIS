@@ -40,6 +40,6 @@ class User extends Model implements AuthenticatableContract,
 
     public function proyectos()
     {
-        return $this->belongsToMany('ProyectoPIS\Proyecto')->withTimestamps();
+        return $this->belongsToMany('ProyectoPIS\Proyecto')->withPivot('jefe')->withTimestamps();
     }
 }
