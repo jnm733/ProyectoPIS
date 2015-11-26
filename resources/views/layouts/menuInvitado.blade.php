@@ -48,8 +48,7 @@
         </div>
         <ul class="nav navbar-right top-nav">
             <li class="active">
-                {!!Form::button(' Registrarse ',['id'=>'btn-registrarse','class'=>'btn btn-link fa fa-fw fa-user-plus', 'data-toggle'=>'modal','data-target'=>'#miventana'])!!}
-                <a href=""><i class="fa fa-fw fa-user-plus" data-target = "modal",data-target="#miventana"></i> Registrarse</a>
+                <a href="#" data-toggle = "modal" data-target="#miventana"><i class="fa fa-fw fa-user-plus"></i> Registrarse</a>
             </li>
         </ul>
         <!-- Top Menu Items -->
@@ -117,10 +116,7 @@
                 <!-- /.row -->
             </div>
 
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar
-                </button>
-            </div>
+            <div class="modal-footer"></div>
         </div>
     </div>
 </div>
