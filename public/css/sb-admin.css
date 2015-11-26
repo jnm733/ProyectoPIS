@@ -17,6 +17,12 @@ body {
     }
 }
 
+#btn-registrarse, #btn-registrarse:focus {
+    border:0;
+    outline:0 none;
+    font-size: 1.2em;
+}
+
 #wrapper {
     padding-left: 0;
 }
@@ -174,7 +180,7 @@ ul.alert-dropdown {
 }
 
 .form-control-usr {
-  width: 20%;
+  width: 30%;
   
 }
 

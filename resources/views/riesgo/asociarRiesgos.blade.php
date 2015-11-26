@@ -80,7 +80,7 @@
 
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar
-                                        </div>
+                                        </button>
                                     </div>
                                 </div>
                             </div>

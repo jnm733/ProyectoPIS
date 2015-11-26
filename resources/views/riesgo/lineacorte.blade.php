@@ -20,30 +20,36 @@
             </div>
 
             <div class="container">                                       
-              <table class="table table-striped table-bordered table-hover table-condensed">
-                <thead>
-                  <tr>
-                    <th>Numero de Riesgo</th>
-                    <th>Riesgo</th>
-                    <th>Probabilidad</th>
-                    <th>Impacto</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($lista as $valor) 
-                <tr>
-                    <td>{{$valor[0]}}</td>
-                    <td>{{$valor[1]}}</td>
-                    <td>{{$valor[3]}} %</td>
-                    <td>{{$valor[2]}}</td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
+                <div class="col-lg-12">
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-8">
+                        <table class="table table-striped table-bordered table-condensed">
+                            <thead>
+                              <tr>
+                                <th>#</th>
+                                <th>Riesgo</th>
+                                <th>Probabilidad</th>
+                                <th>Impacto</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($lista as $valor) 
+                            <tr>
+                                <td>{{$valor[0]}}</td>
+                                <td>{{$valor[1]}}</td>
+                                <td>{{$valor[3]}} %</td>
+                                <td>{{$valor[2]}}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>  
+            
+        </div>
+        <!-- /.row -->
     </div>
-    <!-- /.row -->
-</div>
-<!-- /.container-fluid -->
+    <!-- /.container-fluid -->
 </div>
 <!-- /#page-wrapper -->
 </div>
