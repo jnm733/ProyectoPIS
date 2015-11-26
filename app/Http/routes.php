@@ -26,22 +26,22 @@ Route::get('asociarRiesgos/{id}',[
     'as' => 'asociarRiesgos', 'uses' => 'AsociarRiesgosController@index'
 ]);
 
-Route::get('lineacorte/{id}',[
-    'as' => 'lineacorte', 'uses' => 'RiesgoController@corte'
-]);
-
 Route::get('asociarUsuarios/{id}',[
     'as' => 'asociarUsuarios', 'uses' => 'AsociarUsuariosController@index'
 ]);
 
+Route::get('lineacorte/{id}/{l}',[
+    'as' => 'lineacorte', 'uses' => 'LineaCorteController@index'
+]);
+
 Route::resource('asociarRiesgos','AsociarRiesgosController');
 Route::resource('asociarUsuarios','AsociarUsuariosController');
-Route::resource('usuario','UsuarioController');
-Route::resource('proyecto','ProyectoController');
-Route::resource('tipoProyecto','TipoProyectoController');
-
-Route::resource('riesgo','RiesgoController');
 Route::resource('categoria','CategoriaRiesgoController');
-
+Route::resource('lineacorte','LineaCorteController');
 Route::resource('login','LogController');
 Route::get('logout','LogController@logout');
+Route::resource('proyecto','ProyectoController');
+Route::resource('riesgo','RiesgoController');
+Route::resource('tipoProyecto','TipoProyectoController');
+Route::resource('usuario','UsuarioController');
+

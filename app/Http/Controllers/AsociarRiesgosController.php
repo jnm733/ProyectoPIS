@@ -90,7 +90,7 @@ class AsociarRiesgosController extends Controller
             }
 
         }
-        return redirect()->route('lineacorte',compact('idProyecto'));
+        return redirect()->route('lineacorte',compact('idProyecto','5'));
 }
     /**
      * Display the specified resource.

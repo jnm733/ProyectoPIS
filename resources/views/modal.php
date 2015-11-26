@@ -22,11 +22,11 @@
                     </div>
 
                     <div class="modal-body">
-                    	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa eveniet similique temporibus omnis accusamus sapiente obcaecati repellat tempore eligendi laudantium consequatur, sunt magni eaque dolorum libero! Harum fugiat, impedit earum!
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa eveniet similique temporibus omnis accusamus sapiente obcaecati repellat tempore eligendi laudantium consequatur, sunt magni eaque dolorum libero! Harum fugiat, impedit earum!
                     </div>
 
                     <div class="modal-footer">
-                    	<button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar
                     </div>
                 </div>
             </div>

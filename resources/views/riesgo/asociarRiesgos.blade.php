@@ -21,7 +21,7 @@
             {!! Form::open(array('route' => 'asociarRiesgos.store','method'=>'POST')) !!}                        		
             @foreach ($riesgos->all() as $riesgo)
             <div class="row">
-            <div class="col-lg-2"></div>
+                <div class="col-lg-2"></div>
                 <div class="form-group col-lg-10">
                     <div class="form-group col-lg-4">
                         @if($asociados->contains($riesgo->id))

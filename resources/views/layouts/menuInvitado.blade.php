@@ -91,9 +91,9 @@
                 </div>
 
                 <div class="modal-body">
-                 @include('errors.form')
+                   @include('errors.form')
 
-                 <div class="row">
+                   <div class="row">
                     {!! Form::open(array('route' => 'usuario.store', 'method'=>'POST')) !!}
 
                     

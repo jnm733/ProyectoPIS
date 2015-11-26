@@ -5,52 +5,62 @@ namespace ProyectoPIS\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use ProyectoPIS\Proyecto;
-use ProyectoPIS\CategoriaRiesgo;
-use ProyectoPIS\Riesgo;
 use ProyectoPIS\Http\Requests;
 use ProyectoPIS\Http\Controllers\Controller;
-use ProyectoPIS\Http\Controllers\AsociarRiesgosController;
 
-class RiesgoController extends Controller
+class LineaCorteController extends Controller
 {
-
-    public function __construct(){
-        $this->middleware('auth');
-    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($idProyecto,$linea)
     {
+        $proyecto = Proyecto::find($idProyecto);
+        $nombreProyecto = $proyecto->nombreProyecto;
+        $riesgos = Proyecto::find($idProyecto)->riesgos;
+        
 
+        $lista = array();
+        foreach ($proyecto->riesgos as $riesgo)
+        {
+            
+            switch ($riesgo->pivot->impactoRiesgo) {
+                case 'Catastrofico':
+                $imp = 10;
+                break;
+                case 'Critico':
+                $imp = 7;
+                break;
+                case 'Marginal':
+                $imp = 4;
+                break;
+                default:
+                $imp = 1;
+                break;
+            }
+            
+            $array = array();
+            $array[] = $riesgo->id;
+            $array[] = $riesgo->nombreRiesgo;
+            $array[] = $riesgo->pivot->impactoRiesgo;
+            $array[] = $riesgo->pivot->probRiesgo;
+            $lista = array_add($lista, $imp*($riesgo->pivot->probRiesgo) , $array);
+            
+        }
+        krsort($lista);
+        return view('riesgo.lineacorte',compact('nombreProyecto','lista','linea'));
     }
-
-    
-
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    
-
-    /*Inicio linea de corte */
-    public function reestablecer(Request $request){
-        $prueba = $request['prueba'];
-        dd($prueba);
-        return "hola";
-    }
-/* Fin linea de corte*/
-
     public function create()
     {
-        $id = DB::table('riesgo')->max('id');
-        $id = $id+1;
-        $tipos = CategoriaRiesgo::lists('nombreCategoria');
-        return view('riesgo.create',compact('tipos','id','idProyecto'));
+        //
     }
 
     /**
@@ -61,24 +71,11 @@ class RiesgoController extends Controller
      */
     public function store(Request $request)
     {
-        $idRiesgo = $request['idProyecto'];
-        //dd($idRiesgo);
-
-        $id = DB::table('categoriaRiesgo')->where('nombreCategoria',$request['tipo'])->value('id');
-
-        Riesgo::create([
-            'nombreRiesgo' => $request['nombreRiesgo'],
-            'descripcion' => $request['descripcion'],
-            'factoresRiesgo' => $request['factores'],
-            'reduccionRiesgo' => $request['descripcion'],
-            'supervisionRiesgo' => $request['descripcion'],
-            'categoria_riesgo_id' => $id,
-            ]);
-        
-        return redirect()->route('asociarRiesgos',compact('idRiesgo'));
+        $nombreProyecto = $request['nombreProyecto'];
+        $idProyecto = DB::table('proyecto')->where('nombreProyecto', $nombreProyecto)->value('id');
+        $linea = $request['linea'];
+        return redirect()->route('lineacorte',compact('idProyecto','linea'));
     }
-
-
 
     /**
      * Display the specified resource.

@@ -33,23 +33,82 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($lista as $valor) 
+                            <?php
+                            $var = 1;
+                            ?>
+                            @foreach($lista as $valor)
                             <tr>
-                                <td>{{$valor[0]}}</td>
+                                <td>{{$var}}</td>
                                 <td>{{$valor[1]}}</td>
                                 <td>{{$valor[3]}} %</td>
                                 <td>{{$valor[2]}}</td>
+                                @if($linea==$var)
                             </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            </div>  
-            
+                            <tr>
+                                <td>Linea de corte</td>
+                            </tr>
+                            @endif
+                            <?php 
+                            $var = $var + 1;
+                            ?>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <!-- /.row -->
+        <!--Empieza el modal -->
+        <div class="container" style="margin-top:60px;">
+
+            {!!Form::button('Reestablecer',['class'=>'btn btn-primary', 'data-toggle'=>'modal','data-target'=>'#miventana'])!!}
+
+
+            <div class="modal fade" id="miventana" tabindex="-1" role="dialog" aria-labellebdy="myModallabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+                            <h4 align="center">
+                                <br><b>Reestablecer linea de corte</b>
+                            </h4>
+                        </div>
+
+                        <div class="modal-body">
+                         @include('errors.form')
+
+                         <div class="row">
+                            {!! Form::open(array('route' => 'lineacorte.store', 'method'=>'POST')) !!}
+                            {!!Form::hidden('nombreProyecto',$nombreProyecto)!!}
+                            <input type="hidden" name="lista" value='<?php echo serialize($lista) ?>'></input>
+
+                            <div class="form-group col-lg-12">
+                            <div class="col-lg-5">{!!Form::label('Establecer corte en:')!!}</div>
+                            <div class="col-lg-2">
+                                {!!Form::text('linea',null,['class'=>'form-control'])!!}
+                            </div>
+                            </div>
+                            <div class="form-group col-lg-12">
+                            <div class="col-lg-1">{!!Form::submit('Crear',['class'=>'btn btn-primary'])!!}</div>
+                            </div>
+                            {!! Form::close() !!}
+                        </div>
+                        <!-- /.row -->
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Termina el modal --> 
     </div>
-    <!-- /.container-fluid -->
+    <!-- /.row -->
+</div>
+<!-- /.container-fluid -->
 </div>
 <!-- /#page-wrapper -->
 </div>
