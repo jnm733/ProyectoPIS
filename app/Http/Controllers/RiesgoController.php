@@ -35,15 +35,6 @@ class RiesgoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    
-
-    /*Inicio linea de corte */
-    public function reestablecer(Request $request){
-        $prueba = $request['prueba'];
-        dd($prueba);
-        return "hola";
-    }
-/* Fin linea de corte*/
 
     public function create()
     {
@@ -74,8 +65,8 @@ class RiesgoController extends Controller
             'supervisionRiesgo' => $request['descripcion'],
             'categoria_riesgo_id' => $id,
             ]);
-        
-        return redirect()->route('asociarRiesgos',compact('idRiesgo'));
+        return "<script> self.close() </script>";
+        //return view('cerrar');
     }
 
 
