@@ -41,14 +41,7 @@ class RiesgoController extends Controller
         $nombreProyecto = $proyecto->nombreProyecto;
         $riesgos = Proyecto::find($idProyecto)->riesgos;
         $linea = 5;
-        
-        /*
-        $prueba1 = ['uno','dos'];
-        $prueba2 = [3,4];
-        $prueba3[] = $prueba1;
-        $prueba3[] = $prueba2;
-        dd($prueba3);
-*/
+
         $lista = array();
         $lista2 = array();
         foreach ($proyecto->riesgos as $riesgo)
@@ -77,7 +70,7 @@ class RiesgoController extends Controller
             $lista = array_add($lista, $imp*($riesgo->pivot->probRiesgo) , $array);
             
         }
-        arsort($lista);
+        krsort($lista);
         return view('riesgo.lineacorte',compact('nombreProyecto','lista','linea'));
     }
 
