@@ -47,16 +47,20 @@
             @endforeach
             <div class="row">
                 <div class="form-group col-lg-7">
-                    <div class="col-lg-4">
+                    <div class="col-lg-3">
                     <a href="/riesgo/create" class="btn btn-primary" target="blank">Crear riesgo
                         </a>
                     </div>
 
-                    <div class="col-lg-4">
-                        {!!Form::submit('Asociar riesgos',['id'=>'asociar','class'=>'btn btn-primary'])!!}
+                    <div class="col-lg-3">
+                        {!!Form::submit('Asociar',['name'=>'asociar','id'=>'asociar','class'=>'btn btn-primary'])!!}
                     </div>
 
-                    <div class="col-lg-4">
+                    <div class="col-lg-3">
+                        {!!Form::submit('Asociar y seguir',['name'=>'seguir','id'=>'seguir','class'=>'btn btn-primary'])!!}
+                    </div>
+
+                    <div class="col-lg-3">
                         <a href="/index" class="btn btn-primary">Cancelar
                         </a>
                     </div>
@@ -69,6 +73,7 @@
 
         {!! Form::close() !!}
         {!!$riesgos->render()!!}
+
     </div>
     <!-- /.row -->
 

@@ -79,7 +79,12 @@ class ProyectoController extends Controller
      */
     public function show($id)
     {
-        //
+        $proyecto = Proyecto::find($id);
+        $users = Proyecto::find($id)->users;
+        $riesgos = Proyecto::find($id)->riesgos;
+        //dd($proyecto->nombreProyecto,$users,$riesgos);
+        return view('proyecto.show',compact('id','users','riesgos','proyecto'));
+        //return "hola";
     }
 
     /**

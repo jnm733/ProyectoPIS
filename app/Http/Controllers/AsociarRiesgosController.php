@@ -91,7 +91,12 @@ class AsociarRiesgosController extends Controller
 
         }
         $linea = 5;
-        return redirect()->route('lineacorte',compact('idProyecto','linea'));
+        if($request['asociar']){
+            return redirect()->route('lineacorte',compact('idProyecto','linea'));
+        }else if($request['seguir']){
+            return redirect()->route('asociarRiesgos',compact('idProyecto'));
+        }
+        
 }
     /**
      * Display the specified resource.
