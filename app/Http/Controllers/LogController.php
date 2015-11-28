@@ -2,10 +2,11 @@
 
 namespace ProyectoPIS\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Auth;
 use Session;
 use Redirect;
+use ProyectoPIS\User;
+use Illuminate\Http\Request;
 use ProyectoPIS\Http\Requests;
 use ProyectoPIS\Http\Requests\LoginRequest;
 use ProyectoPIS\Http\Controllers\Controller;
@@ -50,11 +51,12 @@ class LogController extends Controller
             $recordar = true;
         }else{
             $recordar = false;
-            
         }
         
 
         if(Auth::attempt(['name' => $request['nombreUsuario'],'password' => $request['password']],$recordar)){
+            $proyectos = User::find(Auth::user()->id)->proyectos()->where('jefe', true)->get();
+            Session::put('proyectos',$proyectos);
             return redirect()->route('index');
         }
         Session::flash('message-error','Datos incorrectos');

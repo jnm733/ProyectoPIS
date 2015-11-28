@@ -48,9 +48,8 @@
             <div class="row">
                 <div class="form-group col-lg-7">
                     <div class="col-lg-4">
-                    <a href="/riesgo/create" class="btn btn-primary" target="blank">Crear riesgo a
+                    <a href="/riesgo/create" class="btn btn-primary" target="blank">Crear riesgo
                         </a>
-                        {!!Form::submit('Crear riesgo',['name'=>'crear','class'=>'btn btn-primary'])!!}
                     </div>
 
                     <div class="col-lg-4">
@@ -69,6 +68,7 @@
         </div>
 
         {!! Form::close() !!}
+        {!!$riesgos->render()!!}
     </div>
     <!-- /.row -->
 

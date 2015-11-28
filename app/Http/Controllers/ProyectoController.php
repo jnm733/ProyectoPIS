@@ -64,7 +64,7 @@ class ProyectoController extends Controller
         
         //creando una relacion proyecto-usuario
         $proyecto = Proyecto::find($idProyecto);
-        $auth = Auth::user()->id;
+        $auth = Auth::user();
         $proyecto->users()->attach($auth, array('jefe' => true));
         return redirect()->route('asociarUsuarios',compact('idProyecto'));
 

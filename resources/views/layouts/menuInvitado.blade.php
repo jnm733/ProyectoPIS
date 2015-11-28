@@ -60,11 +60,11 @@
                 {!! Form::open(array('route' => 'login.store', 'method'=>'POST')) !!}
                 <h3 class="text-center">Iniciar Sesión</h3>
                 <div class="form-group">
-                    {!!Form::text('nombreUsuario',null,['class'=>'form-control', 'required', 'placeholder'=>'Nombre de usuario'])!!}
+                    {!!Form::text('nombreUsuario',null,['class'=>'form-control', 'placeholder'=>'Nombre de usuario'])!!}
                 </div>
 
                 <div class="form-group">
-                    {!! Form::password('password', ['class'=>'form-control', 'required', 'placeholder'=>'Contraseña']) !!}}
+                    {!! Form::password('password', ['class'=>'form-control', 'placeholder'=>'Contraseña']) !!}}
 
                     {!!Form::checkbox('remember','recordar',false)!!}
                     {!!Form::label('recordarmelbl','Recordar')!!}
@@ -97,16 +97,16 @@
 
                     
                     <div class="form-group col-lg-12">             
-                        {!!Form::text('nombreUsuario',null,['class'=>'form-control form-control-usr center-block', 'required', 'placeholder'=>'Nombre de usuario'])!!}
+                        {!!Form::text('nombreUsuario',null,['class'=>'form-control form-control-usr center-block','placeholder'=>'Nombre de usuario'])!!}
                     </div>
                     <div class="form-group col-lg-12">
-                        {!!Form::text('email',null,['class'=>'form-control form-control-usr center-block', 'required', 'placeholder'=>'Correo de usuario'])!!}
+                        {!!Form::text('email',null,['class'=>'form-control form-control-usr center-block','placeholder'=>'Correo de usuario'])!!}
                     </div>
                     <div class="form-group col-lg-12">
-                        {!! Form::password('password', ['class'=>'form-control form-control-usr center-block', 'required', 'placeholder'=>'Contraseña']) !!}
+                        {!! Form::password('password', ['class'=>'form-control form-control-usr center-block','placeholder'=>'Contraseña']) !!}
                     </div>
                     <div class="form-group col-lg-12">
-                        {!!Form::password('password_confirmation',['class'=>'form-control form-control-usr center-block', 'required', 'placeholder'=>'Repita la contraseña'])!!}
+                        {!!Form::password('password_confirmation',['class'=>'form-control form-control-usr center-block','placeholder'=>'Repita la contraseña'])!!}
                     </div>
                     <div class="col-lg-12">
                         {!!Form::submit('Registrar',['class'=>'btn center-block btn-primary'])!!}

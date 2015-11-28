@@ -29,7 +29,7 @@ class AsociarRiesgosController extends Controller
         $proyecto = DB::table('proyecto')->where('id',$id)->value('nombreProyecto');
         $asociados = Proyecto::find($id)->riesgos;
         
-        $riesgos = Riesgo::All();
+        $riesgos = Riesgo::paginate(5);
 
         return view('riesgo.asociarRiesgos',compact('id','proyecto','riesgos','asociados'));
     }
@@ -90,7 +90,8 @@ class AsociarRiesgosController extends Controller
             }
 
         }
-        return redirect()->route('lineacorte',compact('idProyecto','5'));
+        $linea = 5;
+        return redirect()->route('lineacorte',compact('idProyecto','linea'));
 }
     /**
      * Display the specified resource.

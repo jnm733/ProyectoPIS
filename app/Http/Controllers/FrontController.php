@@ -4,6 +4,8 @@ namespace ProyectoPIS\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use Session;
+use ProyectoPIS\User;
 use Auth;
 use ProyectoPIS\Http\Requests;
 use ProyectoPIS\Http\Controllers\Controller;

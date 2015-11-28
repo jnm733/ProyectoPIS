@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+
+<?php 
+$proyectos = Session::get('proyectos');
+?>
 <html lang="en">
 
 <head>
@@ -36,6 +40,7 @@
 </head>
 
 <body>
+
 <!-- Menú Horizontal -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -78,18 +83,13 @@
             <li>
                 <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-files-o"></i> Proyectos <i class="fa fa-fw fa-caret-down"></i></a>
                 <ul id="demo" class="collapse">
+                
+                    @foreach($proyectos as $proyecto)
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-file-o"></i> Proyecto 1</a>
+                        <a href="{{ route('proyecto.show', $proyecto->id) }}"><i class="fa fa-fw fa-file-o"></i> {{$proyecto->nombreProyecto}}</a>
                     </li>
-                    <li>
-                        <a href="#"><i class="fa fa-fw fa-file-o"></i> Proyecto 2</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-fw fa-file-o"></i> Proyecto 3</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-fw fa-file-o"></i> Proyecto 4</a>
-                    </li>
+                    
+                     @endforeach
                 </ul>
             </li>
         </ul>
