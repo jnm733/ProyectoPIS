@@ -21,7 +21,7 @@ class AsociarUsuariosController extends Controller
     {
         $proyecto = DB::table('proyecto')->where('id',$id)->value('nombreProyecto');
         $asociados = Proyecto::find($id)->users;
-        $usuarios = User::All();
+        $usuarios = User::paginate(5);
 
         return view('usuario.asociarUsuarios',compact('id','proyecto','usuarios','asociados'));
 

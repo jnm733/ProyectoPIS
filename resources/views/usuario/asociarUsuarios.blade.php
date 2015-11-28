@@ -58,6 +58,8 @@
                             </div>
                         </div>
                         {!! Form::close() !!}
+                        
+{!!$usuarios->render()!!}
                 </div>
                 <!-- /.row -->
 
