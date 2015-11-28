@@ -67,6 +67,7 @@
                 </div>
             </div>
             {!!Form::hidden('idProyecto',$id)!!}
+            {!!Form::hidden('page',$riesgos->currentPage())!!}
             <input type="hidden" id="tipo" name="tipo">
             <input type="hidden" id="idProyecto" name="idProyecto" value={{$id}}>
         </div>

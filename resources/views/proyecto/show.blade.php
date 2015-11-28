@@ -30,6 +30,15 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="col-lg-4">
+                    <button data-toggle="collapse" data-target="#datos" class="btn btn-primary">Mostrar Datos</button>
+                    </div>
+                    <div id="datos" class="collapse">
+                        Lorem ipsum dolor text.
+                    </div>
+                    <br><br>
+                </div>
+                <div class="col-lg-12">
+                    <div class="col-lg-4">
                         <h3>
                             <br><b>Codigo de proyecto:</b>
                         </h3>
@@ -80,21 +89,32 @@
                     </div>
                 </div>
                 <div class="col-lg-12">
-                    <ul class="pagination">
-                  <li><a href="#">1</a></li>
-                  <li><a href="#">2</a></li>
-                  <li><a href="#">3</a></li>
-                  <li><a href="#">4</a></li>
-                  <li><a href="#">5</a></li>
-              </ul>
+                    <div class="col-lg-4">
+                        <button data-toggle="collapse" data-target="#usuarios" class="btn btn-primary">Mostrar Usuarios</button>
+                    </div>
+                    <div id="usuarios" class="collapse">
+                        Lorem ipsum dolor text.
+                    </div>
+                    <br><br>
+                </div>
+
+                <div class="col-lg-12">
+                    <div class="col-lg-4">
+                        <button data-toggle="collapse" data-target="#usuarios" class="btn btn-primary">Mostrar Riesgos</button>
+                    </div>
+                    
+
+                    <div id="riesgos" class="collapse">
+                        Lorem ipsum dolor text.
+                    </div>
                 </div>
             </div>
-          <!-- /.row -->
-      </div>
-      <!-- /.container-fluid -->
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
 
-  </div>
-  <!-- /#page-wrapper -->
+    </div>
+    <!-- /#page-wrapper -->
 
 </div>
 <!-- /#wrapper -->

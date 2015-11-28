@@ -81,11 +81,13 @@ class AsociarRiesgosController extends Controller
         //Array con la probabilidad de todos los riesgos habidos y por haber
         $prob = $request['prob'];
 
+        $page = ($request['page'] - 1)*5;
+        //dd($page);
         $pos = 0;
         //Recorremos el array con los nuevos riesgos asociados
         foreach ($riesgos as $riesgo) {
             if(!$asociados->contains($riesgo)){//Si el array de riesgos asociados no contiene el riesgo
-                $pos = $riesgo-1;
+                $pos = $riesgo-1-$page;
                 $proyecto->riesgos()->attach($riesgo, array('probRiesgo' => $prob[$pos],'impactoRiesgo' => $impacto[$pos]));//Se vincula al proyecto
             }
 
