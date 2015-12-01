@@ -21,9 +21,15 @@ class AsociarUsuariosController extends Controller
     {
         $proyecto = DB::table('proyecto')->where('id',$id)->value('nombreProyecto');
         $asociados = Proyecto::find($id)->users;
-        $usuarios = User::paginate(5);
+        $jefe = 0;
+        foreach ($asociados as $user) {
+            if($user->pivot->jefe == '1'){
+                $jefe = $user->id;
+            }
+        }
+        $usuarios = User::All();
 
-        return view('usuario.asociarUsuarios',compact('id','proyecto','usuarios','asociados'));
+        return view('usuario.asociarUsuarios',compact('jefe','id','proyecto','usuarios','asociados'));
 
     }
 
@@ -46,6 +52,7 @@ class AsociarUsuariosController extends Controller
     public function store(Request $request)
     {
         $idProyecto = $request['idProyecto'];
+        $jefe = $request['jefe'];
         
         //Array de asociados actualmente
         $usuarios = $request['usuarios'];
@@ -69,14 +76,14 @@ class AsociarUsuariosController extends Controller
         
         //Recorre el array de id de riesgos asociados
         foreach ($idAsociados as $asociado) {
-            if (!in_array($asociado, $usuarios)) {//Si el array de riesgos asociados actual no contiene el riesgo asociado
+            if (!in_array($asociado, $usuarios) && $asociado!=$jefe) {//Si el array de riesgos asociados actual no contiene el riesgo asociado
                 $proyecto->users()->detach($asociado);//Lo desvincula del proyecto
             }       
         }
-
+        //dd('usuarios',$usuarios,'asociados',$idAsociados);
         //Recorremos el array con los nuevos riesgos asociados
         foreach ($usuarios as $usuario) {
-            if(!$asociados->contains($usuario)){//Si el array de riesgos asociados no contiene el riesgo
+            if(!in_array($usuario,$idAsociados)){//Si el array de riesgos asociados no contiene el riesgo
                 $proyecto->users()->attach($usuario);//Se vincula al proyecto
             }
 

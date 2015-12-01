@@ -6,7 +6,7 @@
 
     <div id="page-wrapper">
 
-        <div class="container-fluid text-center" style="height: 100%">
+        <div class="container-fluid text-center " style="height:auto; min-height: 100%">
 
             <!-- Page Heading -->
             <div class="row">
@@ -46,7 +46,8 @@
             </div>
             @endforeach
             <div class="row">
-                <div class="form-group col-lg-7">
+                <div class="form-group col-lg-12">
+                <div class="col-lg-2"></div>
                     <div class="col-lg-3">
                     <a href="/riesgo/create" class="btn btn-primary" target="blank">Crear riesgo
                         </a>
@@ -57,23 +58,18 @@
                     </div>
 
                     <div class="col-lg-3">
-                        {!!Form::submit('Asociar y seguir',['name'=>'seguir','id'=>'seguir','class'=>'btn btn-primary'])!!}
-                    </div>
-
-                    <div class="col-lg-3">
                         <a href="/index" class="btn btn-primary">Cancelar
                         </a>
                     </div>
                 </div>
             </div>
             {!!Form::hidden('idProyecto',$id)!!}
-            {!!Form::hidden('page',$riesgos->currentPage())!!}
             <input type="hidden" id="tipo" name="tipo">
+            
             <input type="hidden" id="idProyecto" name="idProyecto" value={{$id}}>
         </div>
 
         {!! Form::close() !!}
-        {!!$riesgos->render()!!}
 
     </div>
     <!-- /.row -->

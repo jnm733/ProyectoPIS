@@ -61,8 +61,8 @@ class RiesgoController extends Controller
             'nombreRiesgo' => $request['nombreRiesgo'],
             'descripcion' => $request['descripcion'],
             'factoresRiesgo' => $request['factores'],
-            'reduccionRiesgo' => $request['descripcion'],
-            'supervisionRiesgo' => $request['descripcion'],
+            'reduccionRiesgo' => $request['reduccion'],
+            'supervisionRiesgo' => $request['supervision'],
             'categoria_riesgo_id' => $id,
             ]);
         return "<script> self.close() </script>";
@@ -79,7 +79,9 @@ class RiesgoController extends Controller
      */
     public function show($id)
     {
-        //
+        $riesgo = Riesgo::find($id);
+        $categoria = CategoriaRiesgo::find($riesgo->categoria_riesgo_id);
+        return view('riesgo.show',compact('riesgo','categoria'));
     }
 
     /**

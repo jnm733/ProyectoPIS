@@ -10,6 +10,7 @@ use ProyectoPIS\Http\Requests;
 use ProyectoPIS\Http\Controllers\Controller;
 use ProyectoPIS\TipoProyecto;
 use ProyectoPIS\Proyecto;
+use ProyectoPIS\CategoriaRiesgo;
 
 class ProyectoController extends Controller
 {
@@ -82,8 +83,11 @@ class ProyectoController extends Controller
         $proyecto = Proyecto::find($id);
         $users = Proyecto::find($id)->users;
         $riesgos = Proyecto::find($id)->riesgos;
-        //dd($proyecto->nombreProyecto,$users,$riesgos);
-        return view('proyecto.show',compact('id','users','riesgos','proyecto'));
+        $categorias = DB::table('categoriariesgo')->get();
+        foreach ($categorias as $categoria) {
+            $categoriaArr[] = $categoria->nombreCategoria;
+        }
+        return view('proyecto.show',compact('id','users','riesgos','categoriaArr','proyecto'));
         //return "hola";
     }
 

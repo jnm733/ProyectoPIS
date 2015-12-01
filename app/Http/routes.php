@@ -12,27 +12,27 @@
 */
 
 Route::get('/',[
-    'as' => '/', 'uses' => 'FrontController@index'
-]);
+	'as' => '/', 'uses' => 'FrontController@index'
+	]);
 Route::get('index',[
-    'as' => 'index', 'uses' => 'FrontController@indexUsuario'
-]);
+	'as' => 'index', 'uses' => 'FrontController@indexUsuario'
+	]);
 
 Route::get('registrarse',[
-    'as' => 'registrarse', 'uses' => 'UsuarioController@create'
-]);
+	'as' => 'registrarse', 'uses' => 'UsuarioController@create'
+	]);
 
 Route::get('asociarRiesgos/{id}',[
-    'as' => 'asociarRiesgos', 'uses' => 'AsociarRiesgosController@index'
-]);
+	'as' => 'asociarRiesgos', 'uses' => 'AsociarRiesgosController@index'
+	]);
 
 Route::get('asociarUsuarios/{id}',[
-    'as' => 'asociarUsuarios', 'uses' => 'AsociarUsuariosController@index'
-]);
+	'as' => 'asociarUsuarios', 'uses' => 'AsociarUsuariosController@index'
+	]);
 
 Route::get('lineacorte/{id}/{l}',[
-    'as' => 'lineacorte', 'uses' => 'LineaCorteController@index'
-]);
+	'as' => 'lineacorte', 'uses' => 'LineaCorteController@index'
+	]);
 
 Route::resource('asociarRiesgos','AsociarRiesgosController');
 Route::resource('asociarUsuarios','AsociarUsuariosController');

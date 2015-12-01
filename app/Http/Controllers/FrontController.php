@@ -31,7 +31,11 @@ class FrontController extends Controller
 
     public function indexUsuario()
     {
-        return view('indexUsuario');
+        $proyectos = DB::table('proyecto')->get();
+        $riesgos = DB::table('riesgo')->get();
+        $countProyectos = count($proyectos);
+        $countRiesgos = count($riesgos);
+        return view('indexUsuario',compact('proyectos','riesgos','countProyectos','countRiesgos'));
     }
 
     

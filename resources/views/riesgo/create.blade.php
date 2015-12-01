@@ -33,8 +33,8 @@
 
                 <div class="form-group col-lg-12">
                     <div class="col-lg-3">{!!Form::label('Codigo de riesgo:')!!}</div>
-                    <div class="col-lg-3">
-                    </div>
+                    <div class="col-lg-2">{{$id}}</div>
+
                     <div class="col-lg-3">
                         {!!Form::label('Categoria del riesgo:')!!}
                     </div>
@@ -48,13 +48,10 @@
 
                 <div class="form-group col-lg-12">
                     <div class="col-lg-3">{!!Form::label('Nombre del riesgo:')!!}</div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-8">
                         {!!Form::text('nombreRiesgo',null,['class'=>'form-control', 'required', 'placeholder'=>'Nombre de riesgo'])!!}
                     </div>
-                    <div class="col-lg-3">{!!Form::label('Tipo de riesgo:')!!}</div>
-                    <div class="col-lg-3">
-                        {!!Form::text('tipoRiesgo',null,['class'=>'form-control', 'required', 'placeholder'=>'Tipo de riesgo'])!!}
-                    </div>
+
                 </div>
 
                 <div class="form-group col-lg-12">
