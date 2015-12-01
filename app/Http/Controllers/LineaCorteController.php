@@ -2,9 +2,10 @@
 
 namespace ProyectoPIS\Http\Controllers;
 
-use Illuminate\Http\Request;
 use DB;
+use Session;
 use ProyectoPIS\Proyecto;
+use Illuminate\Http\Request;
 use ProyectoPIS\Http\Requests;
 use ProyectoPIS\Http\Controllers\Controller;
 
@@ -74,7 +75,20 @@ class LineaCorteController extends Controller
         $nombreProyecto = $request['nombreProyecto'];
         $idProyecto = DB::table('proyecto')->where('nombreProyecto', $nombreProyecto)->value('id');
         $linea = $request['linea'];
-        return redirect()->route('lineacorte',compact('idProyecto','linea'));
+        $count = $request['count'];
+        if(!is_numeric($linea)){
+                    $linea = round($count/2);
+                    Session::flash('message-error','Solo se permiten valores numericos');
+                    return redirect()->route('lineacorte',compact('idProyecto','linea'));
+        }else if($linea <0 || $linea > $count){
+                    $linea = round($count/2);
+                    Session::flash('message-error','Debe de ser un valor comprendido entre 0 y '.$count);
+                    return redirect()->route('lineacorte',compact('idProyecto','linea'));
+        }
+        else{
+            return redirect()->route('lineacorte',compact('idProyecto','linea'));
+        }
+        
     }
 
     /**

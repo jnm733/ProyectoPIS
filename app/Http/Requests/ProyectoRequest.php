@@ -4,7 +4,7 @@ namespace ProyectoPIS\Http\Requests;
 
 use ProyectoPIS\Http\Requests\Request;
 
-class UserCreateRequest extends Request
+class ProyectoRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,10 +23,13 @@ class UserCreateRequest extends Request
      */
     public function rules()
     {
+        $today = date("d-m-Y",time()-86400);
         return [
-            'nombreUsuario' => 'min:4|required',
-            'email' => 'email|min:4|required|unique:users',
-            'password' => 'min:4|required|confirmed',
+        'nombreProyecto' => 'required|min:4|max:100|unique:proyecto',
+        'descripcion' => 'required|min:4',
+        'fechaInicio' => 'required|date|after:today',
+        'fechaFin' => 'required|date|after:fechaInicio',
+
         ];
     }
 }

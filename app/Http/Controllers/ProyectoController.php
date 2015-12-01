@@ -1,16 +1,16 @@
 <?php
 
 namespace ProyectoPIS\Http\Controllers;
-
-use Illuminate\Http\Request;
-use DB;
-use Auth;
-use Session;
-use ProyectoPIS\Http\Requests;
+use ProyectoPIS\Http\Requests\ProyectoRequest;
 use ProyectoPIS\Http\Controllers\Controller;
-use ProyectoPIS\TipoProyecto;
-use ProyectoPIS\Proyecto;
 use ProyectoPIS\CategoriaRiesgo;
+use ProyectoPIS\Http\Requests;
+use ProyectoPIS\TipoProyecto;
+use Illuminate\Http\Request;
+use ProyectoPIS\Proyecto;
+use Session;
+use Auth;
+use DB;
 
 class ProyectoController extends Controller
 {
@@ -47,7 +47,7 @@ class ProyectoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProyectoRequest $request)
     {
         //Manipular valores para su insercion
         $tipo = $request['tipo'];

@@ -4,7 +4,7 @@ namespace ProyectoPIS\Http\Requests;
 
 use ProyectoPIS\Http\Requests\Request;
 
-class UserCreateRequest extends Request
+class RiesgoRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,11 @@ class UserCreateRequest extends Request
     public function rules()
     {
         return [
-            'nombreUsuario' => 'min:4|required',
-            'email' => 'email|min:4|required|unique:users',
-            'password' => 'min:4|required|confirmed',
+        'nombreRiesgo' => 'required|min:4|max:100|unique:riesgo',
+        'descripcion' => 'required|min:4',
+        'factores' => 'required|min:4',
+        'reduccion' => 'required|min:4',
+        'supervision' => 'required|min:4',
         ];
     }
 }

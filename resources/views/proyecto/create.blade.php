@@ -54,7 +54,7 @@
                <div class="form-group col-lg-12">
                 <div class="col-lg-3">{!!Form::label('Descripcion del proyecto:')!!}</div>
                 <div class="col-lg-8">
-                    {!!Form::textarea('descripcion',null,['size' => '30x5','class'=>'form-control', 'required', 'placeholder'=>'Descripcion de proyecto'])!!}
+                    {!!Form::textarea('descripcion',null,['size' => '30x5','class'=>'form-control', 'placeholder'=>'Descripcion de proyecto'])!!}
                 </div>
             </div>
             <div class="form-group col-lg-12">
@@ -119,7 +119,7 @@
                     <div class="form-group col-lg-12">
                         <div class="col-lg-3">{!!Form::label('Tipo de Proyecto:')!!}</div>
                         <div class="col-lg-8">
-                            {!!Form::text('tipo',null,['class'=>'form-control', 'required', 'placeholder'=>'Tipo de proyecto'])!!}
+                            {!!Form::text('tipo',null,['class'=>'form-control','placeholder'=>'Tipo de proyecto'])!!}
                         </div>
                     </div>
                     <div class="col-lg-12">
@@ -129,11 +129,6 @@
                     {!! Form::close() !!}
                 </div>
                 <!-- /.row -->
-            </div>
-
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar
-                </button>
             </div>
         </div>
     </div>

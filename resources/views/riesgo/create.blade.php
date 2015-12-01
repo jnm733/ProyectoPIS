@@ -49,7 +49,7 @@
                 <div class="form-group col-lg-12">
                     <div class="col-lg-3">{!!Form::label('Nombre del riesgo:')!!}</div>
                     <div class="col-lg-8">
-                        {!!Form::text('nombreRiesgo',null,['class'=>'form-control', 'required', 'placeholder'=>'Nombre de riesgo'])!!}
+                        {!!Form::text('nombreRiesgo',null,['class'=>'form-control','placeholder'=>'Nombre de riesgo'])!!}
                     </div>
 
                 </div>
@@ -57,28 +57,28 @@
                 <div class="form-group col-lg-12">
                     <div class="col-lg-3">{!!Form::label('Descripcion del riesgo:')!!}</div>
                     <div class="col-lg-8">
-                        {!!Form::textarea('descripcion',null,['size' => '30x5','class'=>'form-control', 'required', 'placeholder'=>'Descripcion de proyecto'])!!}
+                        {!!Form::textarea('descripcion',null,['size' => '30x5','class'=>'form-control', 'placeholder'=>'Descripcion de proyecto'])!!}
                     </div>
                 </div>
 
                 <div class="form-group col-lg-12">
                     <div class="col-lg-3">{!!Form::label('Factores que influyen:')!!}</div>
                     <div class="col-lg-8">
-                        {!!Form::textarea('factores',null,['size' => '30x5','class'=>'form-control', 'required', 'placeholder'=>'Factores que influyen'])!!}
+                        {!!Form::textarea('factores',null,['size' => '30x5','class'=>'form-control', 'placeholder'=>'Factores que influyen'])!!}
                     </div>
                 </div>
 
                 <div class="form-group col-lg-12">
                     <div class="col-lg-3">{!!Form::label('Reduccion del riesgo:')!!}</div>
                     <div class="col-lg-8">
-                        {!!Form::textarea('reduccion',null,['size' => '30x5','class'=>'form-control', 'required', 'placeholder'=>'Reduccion de proyecto'])!!}
+                        {!!Form::textarea('reduccion',null,['size' => '30x5','class'=>'form-control', 'placeholder'=>'Reduccion de proyecto'])!!}
                     </div>
                 </div>
 
                 <div class="form-group col-lg-12">
                     <div class="col-lg-3">{!!Form::label('Supervision del riesgo:')!!}</div>
                     <div class="col-lg-8">
-                        {!!Form::textarea('supervision',null,['size' => '30x5','class'=>'form-control', 'required', 'placeholder'=>'Supervision de proyecto'])!!}
+                        {!!Form::textarea('supervision',null,['size' => '30x5','class'=>'form-control', 'placeholder'=>'Supervision de proyecto'])!!}
                     </div>
                 </div>
 
@@ -124,7 +124,7 @@
                 <div class="form-group col-lg-12">
                     <div class="col-lg-3">{!!Form::label('Nombre de Categoria:')!!}</div>
                     <div class="col-lg-8">
-                        {!!Form::text('nombreCategoria',null,['class'=>'form-control', 'required', 'placeholder'=>'Nombre de Categoria'])!!}
+                        {!!Form::text('nombreCategoria',null,['class'=>'form-control','placeholder'=>'Nombre de Categoria'])!!}
                     </div>
                 </div>
                 <div class="col-lg-12">
@@ -133,11 +133,6 @@
                 {!! Form::close() !!}
             </div>
             <!-- /.row -->
-        </div>
-
-        <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar
-            </button>
         </div>
     </div>
 </div>

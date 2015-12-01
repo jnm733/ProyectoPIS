@@ -9,6 +9,7 @@ use ProyectoPIS\CategoriaRiesgo;
 use ProyectoPIS\Riesgo;
 use ProyectoPIS\Http\Requests;
 use ProyectoPIS\Http\Controllers\Controller;
+use ProyectoPIS\Http\Requests\RiesgoRequest;
 use ProyectoPIS\Http\Controllers\AsociarRiesgosController;
 
 class RiesgoController extends Controller
@@ -50,7 +51,7 @@ class RiesgoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RiesgoRequest $request)
     {
         $idRiesgo = $request['idProyecto'];
         //dd($idRiesgo);

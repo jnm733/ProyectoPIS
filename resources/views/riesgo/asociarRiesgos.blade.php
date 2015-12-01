@@ -17,6 +17,7 @@
                 </div>
             </div>
             @include('errors.form')
+            @include('errors.error')
             
             {!! Form::open(array('route' => 'asociarRiesgos.store','method'=>'POST')) !!}                        		
             @foreach ($riesgos->all() as $riesgo)

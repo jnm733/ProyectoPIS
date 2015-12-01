@@ -2,13 +2,15 @@
 
 namespace ProyectoPIS\Http\Controllers;
 
-use Illuminate\Http\Request;
-use DB;
-use ProyectoPIS\Proyecto;
-use ProyectoPIS\Riesgo;
+use ProyectoPIS\Http\Requests\AsociarRiesgosRequest;
+use ProyectoPIS\Http\Controllers\Controller;
 use ProyectoPIS\CategoriaRiesgo;
 use ProyectoPIS\Http\Requests;
-use ProyectoPIS\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use ProyectoPIS\Proyecto;
+use ProyectoPIS\Riesgo;
+use Session;
+use DB;
 
 class AsociarRiesgosController extends Controller
 {
@@ -40,7 +42,7 @@ class AsociarRiesgosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AsociarRiesgosRequest $request)
     {
         $idProyecto = $request['idProyecto'];
         if($request['crear']) 
@@ -89,11 +91,23 @@ class AsociarRiesgosController extends Controller
             if(!$asociados->contains($riesgo)){//Si el array de riesgos asociados no contiene el riesgo
                 //$pos = $riesgo-1-$page;
                 $pos = $riesgo-1;
+                if(!is_numeric($prob[$pos]))
+                {
+                    Session::flash('message-error','Solo se permiten valores numericos');
+                    return redirect()->route('asociarRiesgos',compact('idProyecto'));
+                }else if($prob[$pos]>100 || $prob[$pos]<0){
+                    Session::flash('message-error','Solo se permiten valores comprendidos entre 0 y 100');
+                    return redirect()->route('asociarRiesgos',compact('idProyecto'));
+                }
+                else{
                 $proyecto->riesgos()->attach($riesgo, array('probRiesgo' => $prob[$pos],'impactoRiesgo' => $impacto[$pos]));//Se vincula al proyecto
+                    
+                }            
             }
 
         }
-        $linea = 5;
+        $linea = count($riesgos)/2;
+        $linea = round($linea);
         if($request['asociar']){
             return redirect()->route('lineacorte',compact('idProyecto','linea'));
         }else if($request['seguir']){

@@ -27,7 +27,7 @@
 
                 <!-- Page Heading -->
                 <div class="row">
-                @include('errors.login-error')
+                @include('errors.error')
                 @include('errors.form')
                     <div class="col-lg-12 text-center">
                         <h1 class="page-header">

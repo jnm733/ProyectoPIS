@@ -5,6 +5,7 @@ namespace ProyectoPIS\Http\Controllers;
 use Illuminate\Http\Request;
 use ProyectoPIS\CategoriaRiesgo;
 use ProyectoPIS\Http\Requests;
+use ProyectoPIS\Http\Requests\CategoriaRiesgoRequest;
 use ProyectoPIS\Http\Controllers\Controller;
 
 class CategoriaRiesgoController extends Controller
@@ -38,7 +39,7 @@ class CategoriaRiesgoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoriaRiesgoRequest $request)
     {
         $categoria = new CategoriaRiesgo($request->all());
         $categoria->save();
