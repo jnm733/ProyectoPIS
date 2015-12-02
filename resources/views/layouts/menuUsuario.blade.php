@@ -83,13 +83,13 @@ $proyectos = Session::get('proyectos');
             <li>
                 <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-files-o"></i> Proyectos <i class="fa fa-fw fa-caret-down"></i></a>
                 <ul id="demo" class="collapse">
-                
-                    @foreach($proyectos as $proyecto)
+                @foreach($proyectos as $proyecto)
                     <li>
                         <a href="{{ route('proyecto.show', $proyecto->id) }}"><i class="fa fa-fw fa-file-o"></i> {{$proyecto->nombreProyecto}}</a>
                     </li>
                     
                      @endforeach
+                    
                 </ul>
             </li>
         </ul>

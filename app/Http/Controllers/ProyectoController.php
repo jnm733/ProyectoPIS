@@ -26,6 +26,8 @@ class ProyectoController extends Controller
      */
     public function index()
     {
+        $proyectos = DB::table('proyecto')->get();
+        return view('proyecto.index',compact('proyectos'));
     }
 
     /**

@@ -97,6 +97,7 @@
                         <td>{{$user->id}}</td>
                         <td>{{$user->name}}</td>
                         <td>{{$user->email}}</td>
+                        <td><a href="/usuario/{{$user->id}}">Ver detalles</a></td>
                     </tr>
 
                     @endforeach

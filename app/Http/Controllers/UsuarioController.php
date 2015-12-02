@@ -22,7 +22,8 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        //
+        $usuarios = User::All();
+        return view('usuario.index',compact('usuarios'));
     }
 
     /**
@@ -60,7 +61,9 @@ class UsuarioController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::find($id);
+        $proyectos = $user->proyectos;
+        return view('usuario.show',compact('user','proyectos'));
     }
 
     /**

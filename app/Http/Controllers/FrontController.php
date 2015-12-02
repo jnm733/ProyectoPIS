@@ -31,13 +31,15 @@ class FrontController extends Controller
 
     public function indexUsuario()
     {
+        $usuario = User::find(Auth::user()->id);
+        $proyectosAsociados = $usuario->proyectos;
         $proyectos = DB::table('proyecto')->get();
         $riesgos = DB::table('riesgo')->get();
         $users = DB::table('users')->get();
         $countProyectos = count($proyectos);
         $countRiesgos = count($riesgos);
         $countUsuarios = count($users);
-        return view('indexUsuario',compact('proyectos','riesgos','countProyectos','countRiesgos','countUsuarios'));
+        return view('indexUsuario',compact('proyectos','riesgos','countProyectos','countRiesgos','countUsuarios','proyectosAsociados'));
     }
 
     

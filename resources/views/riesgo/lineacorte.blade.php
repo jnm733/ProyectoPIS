@@ -48,7 +48,7 @@
                                 @if($linea==$var)
                             </tr>
                             <tr>
-                                <td>Linea de corte</td>
+                                <td colspan="4" align="center">Linea de corte</td>
                             </tr>
                             @endif
                             <?php 

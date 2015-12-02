@@ -25,7 +25,12 @@ class RiesgoController extends Controller
      */
     public function index()
     {
-
+        $riesgos = Riesgo::All();
+        $categorias = DB::table('categoriariesgo')->get();
+        foreach ($categorias as $categoria) {
+            $categoriaArr[] = $categoria->nombreCategoria;
+        }
+        return view('riesgo.index',compact('riesgos','categoriaArr'));
     }
 
     
