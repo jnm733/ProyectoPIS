@@ -96,10 +96,10 @@
                     {!! Form::open(array('route' => 'usuario.store', 'method'=>'POST')) !!}
                     
                     <div class="form-group col-lg-12">             
-                        {!!Form::text('nombreUsuario',null,['class'=>'form-control form-control-usr center-block', 'required', 'placeholder'=>'Nombre de usuario'])!!}
+                        {!!Form::text('name',null,['class'=>'form-control form-control-usr center-block', 'required', 'placeholder'=>'Nombre de usuario'])!!}
                     </div>
                     <div class="form-group col-lg-12">
-                        {!!Form::email('email',null,['class'=>'form-control form-control-usr center-block', 'required', 'placeholder'=>'Correo de usuario'])!!}
+                        {!!Form::email('email',null,['class'=>'form-control form-control-usr center-block', 'placeholder'=>'Correo de usuario'])!!}
                     </div>
                     <div class="form-group col-lg-12">
                         {!! Form::password('password', ['class'=>'form-control form-control-usr center-block', 'required', 'placeholder'=>'Contraseña']) !!}
