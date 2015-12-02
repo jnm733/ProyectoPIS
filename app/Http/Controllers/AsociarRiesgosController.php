@@ -27,28 +27,7 @@ class AsociarRiesgosController extends Controller
         $asociados = Proyecto::find($id)->riesgos;
         $array = array();
         $riesgos = Riesgo::All();
-        $listaRiesgos[] = array();
-        /*
-        foreach ($riesgos as $riesgo) {
-            $listaRiesgos[] = 0;
-        }
-        if($asociados->count()==0){
-            $count = Proyecto::All()->count();
-            $idTipo = DB::table('proyecto')->where('id',$id)->value('tipo_proyecto_id');
-            $proyectos = DB::table('proyecto')->where('tipo_proyecto_id',$idTipo)->get();
-            foreach ($proyectos as $pro) {
-                $proyectoAux = Proyecto::find($pro->id);
-                $riesgosAux = $proyectoAux->riesgos;
-                foreach ($riesgosAux as $r) {
-                            $listaRiesgos[$r->id] = $listaRiesgos[$r->id] +1;
-                }
 
-            }
-            dd($listaRiesgos);
-        }else{
-            dd("con riesgos");
-        }
-        */
 
         return view('riesgo.asociarRiesgos',compact('id','proyecto','riesgos','asociados'));
     }
