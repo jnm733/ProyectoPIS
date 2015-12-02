@@ -8,6 +8,7 @@ use ProyectoPIS\Http\Requests;
 use ProyectoPIS\Http\Requests\UserCreateRequest;
 use ProyectoPIS\Http\Controllers\Controller;
 use ProyectoPIS\User;
+use Session;
 class UsuarioController extends Controller
 {
     /*
@@ -49,6 +50,8 @@ class UsuarioController extends Controller
             'email' => $request['email'],
             'password' => bcrypt($request['password']),
             ]);
+
+        Session::flash('message-info','Usuario registrado correctamente. Ya puede iniciar sesión.');
 
         return redirect()->route('index');
     }
