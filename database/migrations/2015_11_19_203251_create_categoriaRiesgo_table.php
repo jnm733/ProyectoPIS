@@ -12,7 +12,7 @@ class CreateCategoriaRiesgoTable extends Migration
      */
     public function up()
     {
-        Schema::create('categoriaRiesgo', function (Blueprint $table) {
+        Schema::create('categoriariesgo', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombreCategoria');
             $table->timestamps();

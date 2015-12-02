@@ -12,7 +12,7 @@ class CreateTipoProyectoTable extends Migration
      */
     public function up()
     {
-        Schema::create('tipoProyecto', function (Blueprint $table) {
+        Schema::create('tipoproyecto', function (Blueprint $table) {
             $table->increments('id');
             $table->string('tipo');
             $table->timestamps();

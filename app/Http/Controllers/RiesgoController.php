@@ -61,7 +61,7 @@ class RiesgoController extends Controller
         $idRiesgo = $request['idProyecto'];
         //dd($idRiesgo);
 
-        $id = DB::table('categoriaRiesgo')->where('nombreCategoria',$request['tipo'])->value('id');
+        $id = DB::table('categoriariesgo')->where('nombreCategoria',$request['tipo'])->value('id');
 
         Riesgo::create([
             'nombreRiesgo' => $request['nombreRiesgo'],

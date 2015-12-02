@@ -63,7 +63,7 @@
                         	<!-- {!!Form::selectRange('number', 10, 20)!!}
                         	{!!Form::selectMonth('month')!!} -->
                         	
-                        	{!!Form::input('date', 'fechaInicio',null,['class' => 'form-control'])!!}
+                        	{!!Form::date('fechaInicio',\Carbon\Carbon::now(),['class' => 'form-control'])!!}
                         	
                         </div>
                     </div>
@@ -73,7 +73,7 @@
                         	<!-- {!!Form::selectRange('number', 10, 20)!!}
                         	{!!Form::selectMonth('month')!!} -->
                         	
-                        	{!!Form::input('date', 'fechaFin',null,['class' => 'form-control'])!!}
+                        	{!!Form::date('fechaFin',\Carbon\Carbon::now(),['class' => 'form-control'])!!}
                         	
                         </div>
                     </div>
