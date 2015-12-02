@@ -60,15 +60,21 @@ class AsociarUsuariosController extends Controller
         $asociados = $proyecto->users()->get();
         
         //Si no hay usuarios asociados
-        $count = count($usuarios);
+        /*$count = count($usuarios);
         if($count < 1){
-            Session::flash('message-error','Debe asociar un usuario');
-            return redirect()->route('/');
+            redirect()->route('asociarRiesgos',compact('idProyecto')
+        }*/
+        if(is_null($usuarios)){
+            foreach ($asociados as $asociado) {
+                if($asociado->pivot->jefe == 0){
+                    $proyecto->users()->detach($asociado);
+                }
+            }
+            return redirect()->route('asociarRiesgos',compact('idProyecto'));
         }
 
         //Array de asociados al principio
         $idAsociados = array();
-        $idUsuarios = array();
         //Pasamos los registros de la tabla a valores de id
         foreach ($asociados as $asociado) {
             array_push ( $idAsociados , ''.$asociado->id.'' );

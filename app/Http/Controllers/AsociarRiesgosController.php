@@ -6,6 +6,7 @@ use ProyectoPIS\Http\Requests\AsociarRiesgosRequest;
 use ProyectoPIS\Http\Controllers\Controller;
 use ProyectoPIS\CategoriaRiesgo;
 use ProyectoPIS\Http\Requests;
+use ProyectoPIS\TipoProyecto;
 use Illuminate\Http\Request;
 use ProyectoPIS\Proyecto;
 use ProyectoPIS\Riesgo;
@@ -14,12 +15,6 @@ use DB;
 
 class AsociarRiesgosController extends Controller
 {
-
-    public $var = "hola";
-    public function prueba()
-    {
-        return $this->var;
-    }
 
     /**
      * Display a listing of the resource.
@@ -30,8 +25,30 @@ class AsociarRiesgosController extends Controller
     {
         $proyecto = DB::table('proyecto')->where('id',$id)->value('nombreProyecto');
         $asociados = Proyecto::find($id)->riesgos;
-        
+        $array = array();
         $riesgos = Riesgo::All();
+        $listaRiesgos[] = array();
+        /*
+        foreach ($riesgos as $riesgo) {
+            $listaRiesgos[] = 0;
+        }
+        if($asociados->count()==0){
+            $count = Proyecto::All()->count();
+            $idTipo = DB::table('proyecto')->where('id',$id)->value('tipo_proyecto_id');
+            $proyectos = DB::table('proyecto')->where('tipo_proyecto_id',$idTipo)->get();
+            foreach ($proyectos as $pro) {
+                $proyectoAux = Proyecto::find($pro->id);
+                $riesgosAux = $proyectoAux->riesgos;
+                foreach ($riesgosAux as $r) {
+                            $listaRiesgos[$r->id] = $listaRiesgos[$r->id] +1;
+                }
+
+            }
+            dd($listaRiesgos);
+        }else{
+            dd("con riesgos");
+        }
+        */
 
         return view('riesgo.asociarRiesgos',compact('id','proyecto','riesgos','asociados'));
     }
@@ -46,7 +63,7 @@ class AsociarRiesgosController extends Controller
     {
         $idProyecto = $request['idProyecto'];
         if($request['crear']) 
-        return redirect()->route('riesgo',compact('idProyecto'));
+            return redirect()->route('riesgo',compact('idProyecto'));
 
         
 
@@ -101,19 +118,19 @@ class AsociarRiesgosController extends Controller
                 }
                 else{
                 $proyecto->riesgos()->attach($riesgo, array('probRiesgo' => $prob[$pos],'impactoRiesgo' => $impacto[$pos]));//Se vincula al proyecto
-                    
-                }            
-            }
 
+            }            
         }
-        $linea = count($riesgos)/2;
-        $linea = round($linea);
-        if($request['asociar']){
-            return redirect()->route('lineacorte',compact('idProyecto','linea'));
-        }else if($request['seguir']){
-            return redirect()->route('asociarRiesgos',compact('idProyecto'));
-        }
-        
+
+    }
+    $linea = count($riesgos)/2;
+    $linea = round($linea);
+    if($request['asociar']){
+        return redirect()->route('lineacorte',compact('idProyecto','linea'));
+    }else if($request['seguir']){
+        return redirect()->route('asociarRiesgos',compact('idProyecto'));
+    }
+
 }
     /**
      * Display the specified resource.

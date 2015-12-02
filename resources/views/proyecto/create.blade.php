@@ -16,7 +16,7 @@
     </script>
     <div id="page-wrapper">
 
-        <div class="container-fluid" style="height: 100%">
+        <div class="container-fluid" style="height: auto; min-height: 100%;">
 
             <!-- Page Heading -->
             <div class="row">
