@@ -83,7 +83,7 @@ $proyectos = Session::get('proyectos');
                 <a href="/proyecto/create"><i class="fa fa-fw fa-plus"></i> Nuevo Proyecto</a>
             </li>
             <li>
-                <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-files-o"></i> Proyectos <i class="fa fa-fw fa-caret-down"></i></a>
+                <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-files-o"></i> Proyectos Creados <i class="fa fa-fw fa-caret-down"></i></a>
                 <ul id="demo" class="collapse">
                 @foreach($proyectos as $proyecto)
                     <li>
