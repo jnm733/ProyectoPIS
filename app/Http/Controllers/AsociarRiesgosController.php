@@ -27,8 +27,7 @@ class AsociarRiesgosController extends Controller
         $asociados = Proyecto::find($id)->riesgos;
         $array = array();
         $riesgos = Riesgo::All();
-
-
+        //Prueba
         return view('riesgo.asociarRiesgos',compact('id','proyecto','riesgos','asociados'));
     }
 
