@@ -61,9 +61,11 @@ $proyectos = Session::get('proyectos');
                 <li>
                     <a href="/usuario/{!!Auth::user()->id!!}"><i class="fa fa-fw fa-user"></i> Perfil</a>
                 </li>
+                <!-- 
                 <li>
                     <a href="#"><i class="fa fa-fw fa-gear"></i> Opciones</a>
                 </li>
+                -->
                 <li class="divider"></li>
                 <li>
                     <a href="/logout"><i class="fa fa-fw fa-power-off"></i> Desconectar</a>
