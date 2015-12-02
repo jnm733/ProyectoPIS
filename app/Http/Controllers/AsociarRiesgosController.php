@@ -27,7 +27,7 @@ class AsociarRiesgosController extends Controller
         $asociados = Proyecto::find($id)->riesgos;
         $array = array();
         $riesgos = Riesgo::All();
-        
+        /*Prueba*/
         /*
         $listaRiesgos[] = array();
         foreach ($riesgos as $riesgo) {
