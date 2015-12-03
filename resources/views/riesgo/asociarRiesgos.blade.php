@@ -25,12 +25,28 @@
                 <div class="col-lg-2"></div>
                 <div class="form-group col-lg-10">
                     <div class="form-group col-lg-4">
-                        @if($asociados->contains($riesgo->id))
+                    @if(!$nuevo)
+                        @if($asociados->contains($riesgo->id)) 
                         {!!Form::checkbox('riesgos[]',$riesgo->id,true)!!}
                         @else
                         {!!Form::checkbox('riesgos[]',$riesgo->id,false)!!}
                         @endif
-                        {!!Form::label($riesgo->nombreRiesgo)!!}
+                    @else
+                    <?php 
+                    $contain = false;
+                    ?>
+                        @foreach($aconsejados as $acon)
+                            @if($acon == $riesgo->nombreRiesgo)
+                            <?php $contain = true; ?>
+                            @endif
+                        @endforeach
+                        @if($contain)
+                        {!!Form::checkbox('riesgos[]',$riesgo->id,true)!!}
+                        @else
+                        {!!Form::checkbox('riesgos[]',$riesgo->id,false)!!}
+                        @endif
+                    @endif
+                    {!!Form::label($riesgo->nombreRiesgo)!!}
                     </div>
                     <div class="form-group col-lg-1">
                         {!!Form::text('prob[]',null,['class'=>'form-control'])!!}

@@ -15,7 +15,7 @@ use DB;
 
 class AsociarRiesgosController extends Controller
 {
-public function __construct(){
+    public function __construct(){
         $this->middleware('auth');
         $this->middleware('jefe');
     }
@@ -28,15 +28,17 @@ public function __construct(){
     {
         $proyecto = DB::table('proyecto')->where('id',$id)->value('nombreProyecto');
         $asociados = Proyecto::find($id)->riesgos;
-        $array = array();
         $riesgos = Riesgo::All();
+        $nuevo = false;
         /*Prueba*/
-        /*
-        $listaRiesgos[] = array();
+        
+
+        $listaRiesgos[] = 0;
         foreach ($riesgos as $riesgo) {
             $listaRiesgos[] = 0;
         }
         if($asociados->count()==0){
+            $nuevo = true;
             $count = Proyecto::All()->count();
             $idTipo = DB::table('proyecto')->where('id',$id)->value('tipo_proyecto_id');
             $proyectos = DB::table('proyecto')->where('tipo_proyecto_id',$idTipo)->get();
@@ -44,17 +46,27 @@ public function __construct(){
                 $proyectoAux = Proyecto::find($pro->id);
                 $riesgosAux = $proyectoAux->riesgos;
                 foreach ($riesgosAux as $r) {
-                            $listaRiesgos[$r->id] = $listaRiesgos[$r->id] +1;
+                    $prob = $r->pivot->probRiesgo;
+                    $listaRiesgos[$r->id] = $listaRiesgos[$r->id] + $prob;
                 }
 
             }
-            dd($listaRiesgos);
-        }else{
-            dd("con riesgos");
+            
+            $corte = 50/count($proyectos);
+            $i = 0;
+            foreach ($listaRiesgos as $riesgo) {
+                $probRiesgo = $riesgo/count($proyectos);
+                if($probRiesgo>=$corte){
+                    $aconsejados[] = DB::table('riesgo')->where('id',$i)->value('nombreRiesgo');
+                }
+                $i++;
+            }
         }
-        */
-
-        return view('riesgo.asociarRiesgos',compact('id','proyecto','riesgos','asociados'));
+        else{
+            $aconsejados[] = 0;
+        }
+        //dd("nuevo",$nuevo,"aconsejados",$aconsejados);
+        return view('riesgo.asociarRiesgos',compact('id','proyecto','riesgos','asociados','aconsejados','nuevo'));
     }
 
     /**
