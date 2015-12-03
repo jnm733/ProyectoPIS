@@ -91,9 +91,12 @@
                             <div class="col-lg-2">
                                 {!!Form::text('linea',null,['class'=>'form-control','required'])!!}
                             </div>
+                            <div class="col-lg-5">
+                                <h6>(0 para reestablecer por defecto)</h6>
+                            </div>
                             </div>
                             <div class="form-group col-lg-12">
-                            <div class="col-lg-1">{!!Form::submit('Crear',['class'=>'btn btn-primary'])!!}</div>
+                            <div class="col-lg-1">{!!Form::submit('Reestablecer',['class'=>'btn btn-primary'])!!}</div>
                             </div>
                             {!! Form::close() !!}
                         </div>

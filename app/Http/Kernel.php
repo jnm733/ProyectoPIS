@@ -29,5 +29,6 @@ class Kernel extends HttpKernel
         'auth' => \ProyectoPIS\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'guest' => \ProyectoPIS\Http\Middleware\RedirectIfAuthenticated::class,
+        'jefe' => \ProyectoPIS\Http\Middleware\Jefe::class,
     ];
 }

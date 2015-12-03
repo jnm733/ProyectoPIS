@@ -12,6 +12,11 @@ use ProyectoPIS\Http\Controllers\Controller;
 
 class AsociarUsuariosController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware('auth');
+        $this->middleware('jefe');
+    }
     /**
      * Display a listing of the resource.
      *

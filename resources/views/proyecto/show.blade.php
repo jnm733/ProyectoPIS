@@ -158,7 +158,7 @@
 <div class="row">
     <div class="col-lg-12">
         <br>
-        <a href="/lineacorte/{{$proyecto->id}}/5" class = "btn btn-primary">Ver linea de corte</a>
+        <a href="/lineacorte/{{$proyecto->id}}/0" class = "btn btn-primary">Ver linea de corte</a>
     </div>
 
 </div>

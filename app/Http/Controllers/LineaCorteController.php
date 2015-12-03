@@ -11,6 +11,10 @@ use ProyectoPIS\Http\Controllers\Controller;
 
 class LineaCorteController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -22,7 +26,6 @@ class LineaCorteController extends Controller
         $nombreProyecto = $proyecto->nombreProyecto;
         $riesgos = Proyecto::find($idProyecto)->riesgos;
         
-
         $lista = array();
         foreach ($proyecto->riesgos as $riesgo)
         {
@@ -51,6 +54,12 @@ class LineaCorteController extends Controller
             
         }
         krsort($lista);
+
+        if($linea == 0){
+            $linea = count($riesgos)/2;
+            $linea = round($linea);
+        }
+        
         return view('riesgo.lineacorte',compact('nombreProyecto','lista','linea'));
     }
 
@@ -81,7 +90,7 @@ class LineaCorteController extends Controller
                     Session::flash('message-error','Solo se permiten valores numericos');
                     return redirect()->route('lineacorte',compact('idProyecto','linea'));
         }else if($linea <0 || $linea > $count){
-                    $linea = round($count/2);
+                    $linea = 0;
                     Session::flash('message-error','Debe de ser un valor comprendido entre 0 y '.$count);
                     return redirect()->route('lineacorte',compact('idProyecto','linea'));
         }
