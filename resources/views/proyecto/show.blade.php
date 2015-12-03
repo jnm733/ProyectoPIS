@@ -105,7 +105,9 @@
 
                 </tbody>
             </table>
+            @if($jefe)
             <a href="/asociarUsuarios/{{$proyecto->id}}" class = "btn btn-primary">Asociar nuevos usuarios</a>
+            @endif
         </div>
     </div>
 </div>
@@ -147,8 +149,9 @@
 
         </tbody>
     </table>
+    @if($jefe)
     <a href="/asociarRiesgos/{{$proyecto->id}}" class = "btn btn-primary">Asociar nuevos riesgos</a>
-    
+    @endif
 </div>
 </div>
 </div>

@@ -82,14 +82,22 @@ class ProyectoController extends Controller
      */
     public function show($id)
     {
+        $jefe = false;
         $proyecto = Proyecto::find($id);
         $users = Proyecto::find($id)->users;
+        foreach ($users as $user) {
+            if($user->id == Auth::user()->id){
+                if($user->pivot->jefe){
+                    $jefe = true;
+                }
+            }
+        }
         $riesgos = Proyecto::find($id)->riesgos;
         $categorias = DB::table('categoriariesgo')->get();
         foreach ($categorias as $categoria) {
             $categoriaArr[] = $categoria->nombreCategoria;
         }
-        return view('proyecto.show',compact('id','users','riesgos','categoriaArr','proyecto'));
+        return view('proyecto.show',compact('id','users','riesgos','categoriaArr','proyecto','jefe'));
         //return "hola";
     }
 
