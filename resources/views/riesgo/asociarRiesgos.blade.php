@@ -32,10 +32,11 @@
                         {!!Form::checkbox('riesgos[]',$riesgo->id,false)!!}
                         @endif
                     @else
-                    <?php 
-                    $contain = false;
-                    ?>
+                    
                         @foreach($aconsejados as $acon)
+                        <?php 
+                        $contain = false;
+                        ?>
                             @if($acon == $riesgo->nombreRiesgo)
                             <?php $contain = true; ?>
                             @endif

@@ -52,7 +52,6 @@ class UsuarioController extends Controller
             ]);
 
         Session::flash('message-info','Usuario registrado correctamente. Ya puede iniciar sesión.');
-
         return redirect()->route('index');
     }
 

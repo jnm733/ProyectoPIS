@@ -17,7 +17,7 @@ class AsociarRiesgosController extends Controller
 {
     public function __construct(){
         $this->middleware('auth');
-        $this->middleware('jefe');
+        //$this->middleware('jefe');
     }
     /**
      * Display a listing of the resource.
@@ -37,6 +37,7 @@ class AsociarRiesgosController extends Controller
         foreach ($riesgos as $riesgo) {
             $listaRiesgos[] = 0;
         }
+        //dd($asociados->count());
         if($asociados->count()==0){
             $nuevo = true;
             $count = Proyecto::All()->count();
@@ -65,7 +66,16 @@ class AsociarRiesgosController extends Controller
         else{
             $aconsejados[] = 0;
         }
-        //dd("nuevo",$nuevo,"aconsejados",$aconsejados);
+        
+        if(!isset($asociados)){
+            $asociados[] = array();
+            $nuevo = true;
+        }
+
+        if(!isset($aconsejados)){
+            $aconsejados[] = array();
+        }
+
         return view('riesgo.asociarRiesgos',compact('id','proyecto','riesgos','asociados','aconsejados','nuevo'));
     }
 
