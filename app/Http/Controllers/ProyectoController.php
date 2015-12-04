@@ -8,6 +8,7 @@ use ProyectoPIS\Http\Requests;
 use ProyectoPIS\TipoProyecto;
 use Illuminate\Http\Request;
 use ProyectoPIS\Proyecto;
+use ProyectoPIS\User;
 use Session;
 use Auth;
 use DB;
@@ -70,6 +71,8 @@ class ProyectoController extends Controller
         $proyecto = Proyecto::find($idProyecto);
         $auth = Auth::user();
         $proyecto->users()->attach($auth, array('jefe' => true));
+        $proyectos = User::find($auth->id)->proyectos()->where('jefe', true)->get();
+        Session::put('proyectos',$proyectos);
         return redirect()->route('asociarUsuarios',compact('idProyecto'));
 
        
