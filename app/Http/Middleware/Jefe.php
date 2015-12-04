@@ -32,7 +32,7 @@ class Jefe
         foreach ($proyectos as $proyecto) {
             if($proyecto->id == $idProyecto){
                 if($proyecto->pivot->jefe == 1){
-                    
+                    return $next($request);
                 }
             }
         }
